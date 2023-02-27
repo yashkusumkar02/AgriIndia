@@ -1,20 +1,20 @@
 {
   "project_info": {
-    "project_number": "3583208458",
-    "project_id": "agri-india-e26a5",
-    "storage_bucket": "agri-india-e26a5.appspot.com"
+    "project_number": "906720627059",
+    "project_id": "agri-india-52854",
+    "storage_bucket": "agri-india-52854.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:3583208458:android:4e848dc6172c635dc243f3",
+        "mobilesdk_app_id": "1:906720627059:android:a3fb2b042b14a5e76c9d06",
         "android_client_info": {
           "package_name": "com.example.agriindia"
         }
       },
       "oauth_client": [
         {
-          "client_id": "3583208458-dorgick6ngt0c1hvvk2un2v82n79ti5t.apps.googleusercontent.com",
+          "client_id": "906720627059-b1uivo7gf3fgan92a2b3ld10ro28346d.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
             "package_name": "com.example.agriindia",
@@ -22,20 +22,20 @@
           }
         },
         {
-          "client_id": "3583208458-0ltt67aso3n4lsg28khdf6nrpelukn31.apps.googleusercontent.com",
+          "client_id": "906720627059-1mrc71p6u7abj6h13i762ggphd3h5qm2.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyBY02l4d4koHgvAY4UIBpWOtc6Tz5vBoNQ"
+          "current_key": "AIzaSyDKb84q8kYIOZPSbAB-vL6yblfv7FAsJ-g"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "3583208458-0ltt67aso3n4lsg28khdf6nrpelukn31.apps.googleusercontent.com",
+              "client_id": "906720627059-1mrc71p6u7abj6h13i762ggphd3h5qm2.apps.googleusercontent.com",
               "client_type": 3
             }
           ]
