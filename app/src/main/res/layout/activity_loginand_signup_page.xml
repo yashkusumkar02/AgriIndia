@@ -12,7 +12,6 @@
         android:layout_height="736dp"
         android:gravity="center"
         android:orientation="vertical"
-
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -23,15 +22,15 @@
             android:layout_gravity="center"
             app:lottie_autoPlay="true"
             app:lottie_loop="true"
-            app:lottie_rawRes="@raw/welometoapp" />
+            app:lottie_rawRes="@raw/welcomescreen" />
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="30dp"
             android:fontFamily="@font/berkshire_swash"
-            android:gravity="center"
             android:text="Welcome to App"
+            android:gravity="center"
             android:textColor="@color/app"
             android:textSize="30sp"
             android:textStyle="bold" />
@@ -48,6 +47,7 @@
                 android:id="@+id/continueviaphonebuttonnew"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                app:backgroundTint="#EF9B20"
                 android:background="@drawable/loginsignupbutton"
                 android:text="Continue via Phone Number"
                 android:textColor="@color/white"
@@ -59,6 +59,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
+                app:backgroundTint="#EF9B20"
                 android:background="@drawable/loginsignupbutton"
                 android:text="Continue via Google"
                 android:textColor="@color/white"
@@ -70,6 +71,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
+                app:backgroundTint="#EF9B20"
                 android:background="@drawable/loginsignupbutton"
                 android:text="Continue via Email"
                 android:textColor="@color/white"
