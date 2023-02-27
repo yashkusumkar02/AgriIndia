@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "3583208458",
+    "project_id": "agri-india-e26a5",
+    "storage_bucket": "agri-india-e26a5.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:3583208458:android:4e848dc6172c635dc243f3",
+        "android_client_info": {
+          "package_name": "com.example.agriindia"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "3583208458-dorgick6ngt0c1hvvk2un2v82n79ti5t.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.agriindia",
+            "certificate_hash": "d61e54289b9fbf515d842a6ac730dfbda8ecd2af"
+          }
+        },
+        {
+          "client_id": "3583208458-0ltt67aso3n4lsg28khdf6nrpelukn31.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBY02l4d4koHgvAY4UIBpWOtc6Tz5vBoNQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "3583208458-0ltt67aso3n4lsg28khdf6nrpelukn31.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
