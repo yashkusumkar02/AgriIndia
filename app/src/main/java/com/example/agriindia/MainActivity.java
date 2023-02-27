@@ -1,40 +1,55 @@
 package com.example.agriindia;
 
+import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
+import androidx.appcompat.widget.Toolbar;
 
 import android.os.Bundle;
 import android.widget.FrameLayout;
+//import android.widget.Toolbar;
+
 
 import com.etebarian.meowbottomnavigation.MeowBottomNavigation;
 import com.example.agriindia.Fragments.APMCFragment;
 import com.example.agriindia.Fragments.CartFragment;
 import com.example.agriindia.Fragments.HomeFragment;
+import com.example.agriindia.Fragments.OtherFragment;
 import com.example.agriindia.Fragments.PostFragment;
+import com.google.android.material.navigation.NavigationView;
 
 public class MainActivity extends AppCompatActivity {
-
     FrameLayout frameLayout;
     MeowBottomNavigation bottomNavigation;
+    Toolbar toolbar;
+    DrawerLayout drawerLayout;
+    NavigationView navigationView;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+
+        //Bottom Navigation Drawer
+
+
         frameLayout = findViewById(R.id.frame_layout);
         bottomNavigation = findViewById(R.id.bottom_navigation);
 
-        bottomNavigation.add(new MeowBottomNavigation.Model(1,R.drawable.baseline_home_24));
-        bottomNavigation.add(new MeowBottomNavigation.Model(2,R.drawable.baseline_groups_24));
-        bottomNavigation.add(new MeowBottomNavigation.Model(3,R.drawable.baseline_timeline_24));
-        bottomNavigation.add(new MeowBottomNavigation.Model(4,R.drawable.baseline_shopping_cart_24));
+        bottomNavigation.add(new MeowBottomNavigation.Model(1, R.drawable.baseline_home_24));
+        bottomNavigation.add(new MeowBottomNavigation.Model(2, R.drawable.baseline_groups_24));
+        bottomNavigation.add(new MeowBottomNavigation.Model(3, R.drawable.baseline_timeline_24));
+        bottomNavigation.add(new MeowBottomNavigation.Model(4, R.drawable.baseline_shopping_cart_24));
+        bottomNavigation.add(new MeowBottomNavigation.Model(5, R.drawable.baseline_menu_24));
 
         bottomNavigation.setOnShowListener(new MeowBottomNavigation.ShowListener() {
             @Override
             public void onShowItem(MeowBottomNavigation.Model item) {
                 Fragment fragment = null;
 
-                switch (item.getId()){
+                switch (item.getId()) {
                     case 1:
                         fragment = new HomeFragment();
                         break;
@@ -47,10 +62,13 @@ public class MainActivity extends AppCompatActivity {
                     case 4:
                         fragment = new CartFragment();
                         break;
+                    case 5:
+                        fragment = new OtherFragment();
+                        break;
                 }
 
                 assert fragment != null;
-                getSupportFragmentManager().beginTransaction().replace(R.id.frame_layout,fragment).commit();
+                getSupportFragmentManager().beginTransaction().replace(R.id.frame_layout, fragment).commit();
 
                 bottomNavigation.setOnClickMenuListener(new MeowBottomNavigation.ClickListener() {
                     @Override
@@ -67,6 +85,21 @@ public class MainActivity extends AppCompatActivity {
                 });
             }
         });
-        bottomNavigation.show(1,true);
+        bottomNavigation.show(1, true);
+
+
+        //Side Navigation Drawer
+
+//        drawerLayout = findViewById(R.id.drawerlayout);
+//        navigationView = findViewById(R.id.navigationview);
+//        toolbar = findViewById(R.id.toolbar);
+//
+//        setSupportActionBar(toolbar);
+//
+//        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawerLayout, toolbar, R.string.navigation_open, R.string.navigation_close);
+//
+//        drawerLayout.addDrawerListener(toggle);
+//        toggle.syncState();
     }
+
 }

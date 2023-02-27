@@ -90,6 +90,6 @@ public class LoginEmailActivity extends AppCompatActivity {
         progressDialog.setMessage("Logging In...!");
         progressDialog.show();
 
-        firebaseAuth
+
     }
 }
