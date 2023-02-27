@@ -52,4 +52,7 @@ dependencies {
     
     //New Material Design
 //    implementation 'com.google.android.material:material:1.8.0'
+
+    //navigation bar
+    implementation 'com.etebarian:meow-bottom-navigation-java:1.2.0'
 }
