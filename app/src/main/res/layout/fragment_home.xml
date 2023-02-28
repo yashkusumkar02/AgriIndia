@@ -1,14 +1,135 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:layout_marginBottom="50dp"
+    android:padding="20dp"
     tools:context=".Fragments.HomeFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_height="match_parent">
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/amaranth"
+                    android:text="Agri India"
+                    android:textColor="@color/black2"
+                    android:textSize="30sp" />
+
+                <ImageView
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:src="@drawable/baseline_shopping_cart_24" />
+
+            </RelativeLayout>
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:layout_marginTop="20dp"
+                android:background="@color/app"
+                android:padding="10dp"
+                app:cardCornerRadius="20dp"
+                app:cardElevation="10dp">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@color/app">
+
+                </RelativeLayout>
+
+            </androidx.cardview.widget.CardView>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:text="Articles"
+                android:textColor="@color/black2"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recHorizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+            </androidx.recyclerview.widget.RecyclerView>
+
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="130dp"
+                android:layout_marginTop="20dp"
+                android:background="@color/app"
+                android:padding="10dp"
+                app:cardCornerRadius="20dp"
+                app:cardElevation="10dp">
+
+                <ImageView
+                    android:id="@+id/banner"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:scaleType="centerCrop" />
+
+            </androidx.cardview.widget.CardView>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_centerInParent="true"
+                    android:layout_marginTop="20dp"
+                    android:text="Products"
+                    android:textColor="@color/black2"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/showall"
+                    android:layout_width="50dp"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerInParent="true"
+                    android:text="   >"
+                    android:textColor="@color/black2"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+
+
+            </RelativeLayout>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:layout_marginTop="10dp"
+                android:id="@+id/recVerticle"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                tools:listitem="@layout/single_product_row">
+
+            </androidx.recyclerview.widget.RecyclerView>
+
+        </LinearLayout>
+    </ScrollView>
 </FrameLayout>

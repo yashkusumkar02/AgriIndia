@@ -2,11 +2,13 @@ package com.example.agriindia;
 
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 import androidx.appcompat.widget.Toolbar;
 
 import android.os.Bundle;
+import android.view.View;
 import android.widget.FrameLayout;
 //import android.widget.Toolbar;
 
@@ -31,7 +33,8 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-
+        getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);//  set status text dark
+        getWindow().setStatusBarColor(ContextCompat.getColor(MainActivity.this,R.color.white));
         //Bottom Navigation Drawer
 
 
