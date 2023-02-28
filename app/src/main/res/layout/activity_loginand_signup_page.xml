@@ -29,8 +29,8 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="30dp"
             android:fontFamily="@font/berkshire_swash"
+            android:textAlignment="center"
             android:text="Welcome to App"
-            android:gravity="center"
             android:textColor="@color/app"
             android:textSize="30sp"
             android:textStyle="bold" />

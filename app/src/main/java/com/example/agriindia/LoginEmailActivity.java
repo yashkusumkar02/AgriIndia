@@ -1,12 +1,16 @@
 package com.example.agriindia;
 
+import static android.os.Build.VERSION_CODES.M;
+
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.util.Patterns;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ProgressBar;
@@ -16,80 +20,38 @@ import com.google.firebase.auth.FirebaseAuth;
 
 import java.util.regex.Pattern;
 
+import br.com.simplepass.loading_button_lib.animatedDrawables.CircularAnimatedDrawable;
+import br.com.simplepass.loading_button_lib.animatedDrawables.CircularRevealAnimatedDrawable;
+import br.com.simplepass.loading_button_lib.customViews.CircularProgressButton;
+
 public class LoginEmailActivity extends AppCompatActivity {
 
-    private ProgressDialog progressDialog;
-
-    private FirebaseAuth firebaseAuth;
-
-    ImageButton imageButton;
-    MaterialButton mate1, mate2;
-    EditText editText1, editText2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+       Button button = findViewById(R.id.cirLoginButton);
+
+
         setContentView(R.layout.activity_login_email);
 
-        imageButton=findViewById(R.id.toolbar_backbtn);
-        mate1=findViewById(R.id.loginbtn);
-        mate2=findViewById(R.id.signup_btn);
-        editText1=findViewById(R.id.emailEt);
-        editText2=findViewById(R.id.passwordPt);
-
-        firebaseAuth =FirebaseAuth.getInstance();
-
-        progressDialog = new ProgressDialog(this);
-        progressDialog.setTitle("Please Wait...");
-        progressDialog.setCanceledOnTouchOutside(false);
-
-        imageButton.setOnClickListener(new View.OnClickListener() {
+        button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                onBackPressed();
-            }
-        });
-
-        mate2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent=new Intent(LoginEmailActivity.this, RegisterEmailActivity.class);
+                Intent intent=new Intent(LoginEmailActivity.this,MainActivity.class);
                 startActivity(intent);
-                finish();
-            }
-        });
-
-        mate1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                validateData();
             }
         });
 
     }
-    private  String email, password;
 
-    private void validateData() {
-        email= editText1.getText().toString().trim();
-        password= editText2.getText().toString();
 
-        if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()){
-            editText1.setError("Invalid Email...");
-            editText1.requestFocus();
-        } else if (password.isEmpty()) {
-            editText2.setError("Enter Password");
-            editText2.requestFocus();
-        }
-        else {
-            loginUser();
-        }
-
+    public void onLoginClick(View view)
+    {
+        startActivity(new Intent(this, RegisterEmailActivity.class));
+        overridePendingTransition(R.anim.slide_in_right, R.anim.stay);
     }
 
-    private void loginUser() {
-        progressDialog.setMessage("Logging In...!");
-        progressDialog.show();
 
 
-    }
 }
