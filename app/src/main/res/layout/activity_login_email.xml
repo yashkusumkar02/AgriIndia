@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_gravity="center"
-    android:background="@color/login_bk_color"
+    android:background="#FFFFFF"
     android:focusableInTouchMode="true"
     android:gravity="center"
     tools:context=".LoginEmailActivity">
