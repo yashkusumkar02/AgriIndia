@@ -26,32 +26,29 @@ import br.com.simplepass.loading_button_lib.customViews.CircularProgressButton;
 
 public class LoginEmailActivity extends AppCompatActivity {
 
+    Button button;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-       Button button = findViewById(R.id.cirLoginButton);
-
-
         setContentView(R.layout.activity_login_email);
-
+        button = findViewById(R.id.loginButton);
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent=new Intent(LoginEmailActivity.this,MainActivity.class);
+                Intent intent=new Intent(LoginEmailActivity.this, MainActivity.class);
                 startActivity(intent);
+                finish();
             }
         });
 
-    }
 
+    }
 
     public void onLoginClick(View view)
     {
         startActivity(new Intent(this, RegisterEmailActivity.class));
         overridePendingTransition(R.anim.slide_in_right, R.anim.stay);
     }
-
-
 
 }
