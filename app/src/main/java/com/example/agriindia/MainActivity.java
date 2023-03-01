@@ -17,6 +17,7 @@ import com.etebarian.meowbottomnavigation.MeowBottomNavigation;
 import com.example.agriindia.Fragments.APMCFragment;
 import com.example.agriindia.Fragments.CartFragment;
 import com.example.agriindia.Fragments.HomeFragment;
+import com.example.agriindia.Fragments.OrderFragment;
 import com.example.agriindia.Fragments.OtherFragment;
 import com.example.agriindia.Fragments.PostFragment;
 import com.google.android.material.navigation.NavigationView;
@@ -63,7 +64,7 @@ public class MainActivity extends AppCompatActivity {
                         fragment = new APMCFragment();
                         break;
                     case 4:
-                        fragment = new CartFragment();
+                        fragment = new OrderFragment();
                         break;
                     case 5:
                         fragment = new OtherFragment();

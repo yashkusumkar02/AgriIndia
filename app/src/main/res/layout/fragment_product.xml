@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginBottom="50dp"
+    android:padding="20dp"
+    tools:context=".Fragments.ProductFragment">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/productsText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Products"
+                android:textColor="@color/black2"
+                android:textSize="25sp"
+                android:textStyle="bold" />
+
+
+            <View
+                android:id="@+id/view1"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_below="@id/productsText"
+                android:layout_marginTop="20dp"
+                android:background="@color/black2" />
+
+
+            <ImageView
+                android:id="@+id/image"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:layout_below="@+id/view1"
+                android:layout_marginTop="20dp"
+                android:padding="5dp"
+                android:scaleType="fitCenter"
+                android:src="@mipmap/ic_launcher" />
+
+            <View
+                android:id="@+id/view"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_below="@id/image"
+                android:layout_marginTop="20dp"
+                android:background="@color/black2" />
+
+            <TextView
+                android:id="@+id/title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/view"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="20dp"
+                android:fontFamily="@font/bai_jamjuree"
+                android:text="Title"
+                android:textColor="@color/black2"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/price"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/title"
+                android:layout_marginLeft="20dp"
+                android:fontFamily="@font/bai_jamjuree"
+                android:text="Price"
+                android:textColor="#F65F5F"
+                android:textSize="30sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/quantityText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/price"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="5dp"
+                android:text="Quantity"
+                android:textColor="@color/black2"
+                android:textSize="17sp" />
+
+            <Button
+                android:id="@+id/add"
+                android:layout_width="50dp"
+                android:layout_height="30dp"
+                android:layout_below="@+id/quantityText"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/round_button_trans"
+                android:foregroundGravity="center"
+                android:gravity="center"
+                android:text="+"
+                android:textColor="@color/black2"
+                android:textSize="20dp" />
+
+            <TextView
+                android:id="@+id/counter"
+                android:layout_width="50dp"
+                android:layout_height="30dp"
+                android:layout_below="@+id/quantityText"
+                android:layout_marginTop="10dp"
+                android:layout_toRightOf="@+id/add"
+                android:gravity="center"
+                android:text="0"
+                android:textColor="@color/black2"
+                android:textSize="18dp" />
+
+
+            <Button
+                android:id="@+id/minus"
+                android:layout_width="50dp"
+                android:layout_height="30dp"
+                android:layout_below="@+id/quantityText"
+                android:layout_marginTop="10dp"
+                android:layout_toRightOf="@+id/counter"
+                android:background="@drawable/round_button_trans"
+                android:foregroundGravity="center"
+                android:gravity="center"
+                android:text="-"
+                android:textColor="@color/black2"
+                android:textSize="20dp" />
+
+            <TextView
+                android:id="@+id/descriptionText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/add"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="18dp"
+                android:text="Description"
+                android:textColor="@color/black2"
+                android:textSize="17sp" />
+
+            <TextView
+                android:id="@+id/description"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/descriptionText"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginRight="20dp"
+                android:text="Description"
+                android:textColor="@color/black2"
+                android:textSize="15sp" />
+
+            <android.widget.Button
+                android:id="@+id/cartBtnP"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/description"
+                android:layout_marginLeft="50dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginRight="50dp"
+                android:background="@drawable/round_button"
+                android:clickable="true"
+                android:fontFamily="@font/antic"
+                android:text="Add to cart"
+                android:textColor="@color/white"
+                android:textSize="18sp"
+                android:layout_alignParentBottom="true" />
+
+        </RelativeLayout>
+    </ScrollView>
+
+
+    </LinearLayout>
+</FrameLayout>

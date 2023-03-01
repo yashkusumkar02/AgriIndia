@@ -2,6 +2,8 @@
 <resources>
     <array name="preloaded_fonts" translatable="false">
         <item>@font/amaranth</item>
+        <item>@font/antic</item>
+        <item>@font/bai_jamjuree</item>
         <item>@font/berkshire_swash</item>
     </array>
 </resources>

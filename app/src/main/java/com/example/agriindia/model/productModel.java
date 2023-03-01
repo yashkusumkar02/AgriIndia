@@ -1,9 +1,10 @@
 package com.example.agriindia.model;
 
 public class productModel {
-String purl,price,title;
+String purl,price,title,desc,quantity;
 
     productModel(){}
+
     public String getPurl() {
         return purl;
     }
@@ -28,9 +29,27 @@ String purl,price,title;
         this.title = title;
     }
 
-    public productModel(String purl, String price, String title) {
+    public String getDesc() {
+        return desc;
+    }
+
+    public void setDesc(String desc) {
+        this.desc = desc;
+    }
+
+    public String getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(String quantity) {
+        this.quantity = quantity;
+    }
+
+    public productModel(String purl, String price, String title, String desc, String quantity) {
         this.purl = purl;
         this.price = price;
         this.title = title;
+        this.desc = desc;
+        this.quantity = quantity;
     }
 }

@@ -14,17 +14,18 @@ import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.example.agriindia.Fragments.CartProductFragment;
 import com.example.agriindia.Fragments.ProductFragment;
 import com.example.agriindia.R;
 import com.example.agriindia.model.productModel;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
 
-public class ProductAdapter extends FirebaseRecyclerAdapter<productModel,ProductAdapter.myviewHolder> {
+public class CartAdapter extends FirebaseRecyclerAdapter<productModel,CartAdapter.myviewHolder> {
 
     Context context;
     Activity activity;
-    public ProductAdapter(@NonNull FirebaseRecyclerOptions<productModel> options) {
+    public CartAdapter(@NonNull FirebaseRecyclerOptions<productModel> options) {
         super(options);
     }
 
@@ -32,13 +33,17 @@ public class ProductAdapter extends FirebaseRecyclerAdapter<productModel,Product
     protected void onBindViewHolder(@NonNull myviewHolder holder, int position, @NonNull productModel model) {
         holder.title.setText(model.getTitle());
         holder.price.setText("₹"+model.getPrice());
-        String url = model.getPurl();
+        holder.quantity.setText(model.getQuantity());
+//        int qua = Integer.parseInt(model.getQuantity());
+//        int pr = Integer.parseInt(model.getPrice());
+        holder.total.setText("₹"+model.getPrice());
+
         Glide.with(holder.image.getContext()).load(model.getPurl()).into(holder.image);
         holder.card.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 AppCompatActivity activity=(AppCompatActivity)v.getContext();
-                activity.getSupportFragmentManager().beginTransaction().replace(R.id.frame_layout,new ProductFragment(model.getTitle())).addToBackStack(null).commit();
+                activity.getSupportFragmentManager().beginTransaction().replace(R.id.frame_layout,new CartProductFragment(model.getTitle())).addToBackStack(null).commit();
 
             }
         });
@@ -48,14 +53,15 @@ public class ProductAdapter extends FirebaseRecyclerAdapter<productModel,Product
     @NonNull
     @Override
     public myviewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.single_product_row,parent,false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.single_cart_row,parent,false);
         return new myviewHolder(view);
     }
 
     class myviewHolder extends RecyclerView.ViewHolder{
 
         ImageView image;
-        TextView title,price;
+        TextView title,price,total,quantity;
+        ImageView delete;
 
         CardView card;
 
@@ -65,8 +71,10 @@ public class ProductAdapter extends FirebaseRecyclerAdapter<productModel,Product
             title = (TextView) itemView.findViewById(R.id.title);
             price = (TextView) itemView.findViewById(R.id.price);
             image = itemView.findViewById(R.id.image);
+            total = itemView.findViewById(R.id.total);
             card = itemView.findViewById(R.id.card);
-
+            quantity = itemView.findViewById(R.id.quantity);
+            delete = itemView.findViewById(R.id.delete);
         }
     }
 

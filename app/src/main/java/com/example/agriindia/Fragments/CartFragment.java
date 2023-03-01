@@ -3,12 +3,19 @@ package com.example.agriindia.Fragments;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.example.agriindia.Adapter.CartAdapter;
+import com.example.agriindia.Adapter.ProductAdapter;
 import com.example.agriindia.R;
+import com.example.agriindia.model.productModel;
+import com.firebase.ui.database.FirebaseRecyclerOptions;
+import com.google.firebase.database.FirebaseDatabase;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -17,6 +24,8 @@ import com.example.agriindia.R;
  */
 public class CartFragment extends Fragment {
 
+    CartAdapter productAdapter;
+    RecyclerView recyclerViewProducts;
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -26,6 +35,10 @@ public class CartFragment extends Fragment {
     private String mParam1;
     private String mParam2;
 
+    String username;
+    public CartFragment(String username){
+        this.username = username;
+    }
     public CartFragment() {
         // Required empty public constructor
     }
@@ -57,10 +70,34 @@ public class CartFragment extends Fragment {
         }
     }
 
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_cart, container, false);
+        View view = inflater.inflate(R.layout.fragment_cart, container, false);
+        recyclerViewProducts  = view.findViewById(R.id.recCart);
+        recyclerViewProducts.setLayoutManager(new LinearLayoutManager(getContext()));
+        FirebaseRecyclerOptions<productModel> options =
+                new FirebaseRecyclerOptions.Builder<productModel>()
+                        .setQuery(FirebaseDatabase.getInstance().getReference("Cart").child(username), productModel.class)
+                        .build();
+
+
+        productAdapter = new CartAdapter(options);
+        recyclerViewProducts.setAdapter(productAdapter);
+
+        return view;
+    }
+    @Override
+    public void onStart() {
+        super.onStart();
+        productAdapter.startListening();
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        productAdapter.stopListening();
     }
 }

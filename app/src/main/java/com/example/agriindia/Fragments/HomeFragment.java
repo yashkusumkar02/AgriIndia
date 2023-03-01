@@ -119,6 +119,16 @@ public class HomeFragment extends Fragment {
             }
         });
 
+        ImageView cart = view.findViewById(R.id.cartBtn);
+        String username = "Test";
+        cart.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                AppCompatActivity activity=(AppCompatActivity)v.getContext();
+                activity.getSupportFragmentManager().beginTransaction().replace(R.id.frame_layout,new CartFragment(username)).addToBackStack(null).commit();
+
+            }
+        });
         return view;
     }
     @Override
