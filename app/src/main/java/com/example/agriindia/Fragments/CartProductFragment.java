@@ -2,13 +2,24 @@ package com.example.agriindia.Fragments;
 
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.TextView;
+import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
 import com.example.agriindia.R;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -21,6 +32,8 @@ public class CartProductFragment extends Fragment {
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
+
+    String title2,price1,purl1,desc,quntity1;
 
     // TODO: Rename and change types of parameters
     private String mParam1;
@@ -66,6 +79,56 @@ public class CartProductFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_cart_product, container, false);
+        TextView title1,description,quantity,price,total;
+        ImageView image;
+        Button order;
+
+        title1 = view.findViewById(R.id.title);
+        description = view.findViewById(R.id.description);
+        quantity = view.findViewById(R.id.quantity);
+        price = view.findViewById(R.id.price);
+        total = view.findViewById(R.id.total);
+
+        image = view.findViewById(R.id.image);
+
+        order = view.findViewById(R.id.orderBtn);
+
+        DatabaseReference reference;
+        reference = FirebaseDatabase.getInstance().getReference("Cart");
+        reference.child("Test").child(title).get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<DataSnapshot> task) {
+                if (task.isSuccessful()){
+                    if (task.getResult().exists()){
+                        DataSnapshot dataSnapshot = task.getResult();
+                        title2 = String.valueOf(dataSnapshot.child("title").getValue());
+                        price1 = String.valueOf(dataSnapshot.child("price").getValue());
+                        purl1 = String.valueOf(dataSnapshot.child("purl").getValue());
+                        desc = String.valueOf(dataSnapshot.child("desc").getValue());
+                        quntity1 = String.valueOf(dataSnapshot.child("quantity").getValue());
+
+                        title1.setText(title2);
+                        price.setText("₹ "+price1);
+                        description.setText(desc);
+                        quantity.setText(quntity1);
+
+                        int i = Integer.parseInt(price1);
+                        int j = Integer.parseInt(quntity1);
+                        int k = i*j;
+                        Toast.makeText(getActivity(),k , Toast.LENGTH_SHORT).show();
+//                        total.setText(k);
+//
+                        Glide.with(getContext())
+                                .asBitmap()
+                                .load(purl1)
+                                .into(image);
+
+                    }
+                }
+            }
+        });
+
+
 
         return view;
     }
