@@ -63,4 +63,6 @@ dependencies {
     annotationProcessor 'com.github.bumptech.glide:compiler:4.15.0'
 
     implementation 'br.com.simplepass:loading-button-android:1.14.0'
+
+    implementation 'com.chaos.view:pinview:1.4.3'
 }

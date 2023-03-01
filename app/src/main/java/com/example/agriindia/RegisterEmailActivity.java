@@ -5,17 +5,23 @@ import static android.os.Build.VERSION_CODES.M;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
+import android.util.Patterns;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.EditText;
+
+import com.google.firebase.auth.FirebaseAuth;
 
 public class RegisterEmailActivity extends AppCompatActivity {
 
     Button button;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,16 +30,14 @@ public class RegisterEmailActivity extends AppCompatActivity {
 
         button=findViewById(R.id.registerButton);
 
+
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent=new Intent(RegisterEmailActivity.this,MainActivity.class);
+                Intent intent=new Intent(RegisterEmailActivity.this, VerifyOTP.class);
                 startActivity(intent);
-                finish();
             }
         });
-
-
 
         changeStatusBarColor();
 
@@ -54,4 +58,8 @@ public class RegisterEmailActivity extends AppCompatActivity {
         startActivity(new Intent(this,LoginEmailActivity.class));
         overridePendingTransition(R.anim.slide_in_left, android.R.anim.slide_out_right);
     }
+
+
+
+
 }

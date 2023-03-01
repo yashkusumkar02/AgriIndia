@@ -73,16 +73,32 @@
                     android:maxLines="1" />
 
             </com.google.android.material.textfield.TextInputLayout>
+            
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp">
 
-            <TextView
-                android:id="@+id/textForgetPassword"
-                style="@style/viewParent"
-                android:layout_gravity="end"
-                android:layout_marginTop="10dp"
-                android:text="Forget Password?"
-                android:textColor="@color/black"
-                android:textSize="@dimen/newsMoreTextSize"
-                android:textStyle="bold" />
+                <CheckBox
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    style="@style/Widget.AppCompat.CompoundButton.CheckBox"
+                    android:text="Remember Me"
+                    android:layout_centerVertical="true"
+                    android:buttonTint="@color/black"/>
+
+                <Button
+                    android:id="@+id/textForgetPassword"
+                    style="@style/viewParent"
+                    android:background="#00000000"
+                    android:text="Forget Password?"
+                    android:textColor="@color/black"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentRight="true"/>
+
+            </RelativeLayout>
+
+
 
             <Button
                 android:id="@+id/loginButton"

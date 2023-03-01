@@ -5,5 +5,11 @@
         <item>@font/antic</item>
         <item>@font/bai_jamjuree</item>
         <item>@font/berkshire_swash</item>
+        <item>@font/muli</item>
+        <item>@font/muli_black</item>
+        <item>@font/muli_black_one</item>
+        <item>@font/muli_bold</item>
+        <item>@font/muli_extralight</item>
+        <item>@font/muli_semibold</item>
     </array>
 </resources>
