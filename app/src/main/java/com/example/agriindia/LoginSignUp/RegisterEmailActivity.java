@@ -171,13 +171,16 @@ public class RegisterEmailActivity extends AppCompatActivity {
 
         String address = "Enter your address";
 
+
+
         FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
         DatabaseReference reference = firebaseDatabase.getReference("users");
-        UserHelperClass helperClass = new UserHelperClass( name, username, email, phoneNo, password,address);
-        reference.child(username).setValue(helperClass);
 
-        Intent intent = new Intent(RegisterEmailActivity.this, MainActivity.class);
-        intent.putExtra("username",username);
+        //Stroing Data in Firebase
+        //UserHelperClass helperClass = new UserHelperClass( name, username, email, phoneNo, password,address);
+       // reference.child(username).setValue(helperClass);
+
+        Intent intent = new Intent(getApplicationContext(), LoginEmailActivity.class);
         startActivity(intent);
         finish();
 
