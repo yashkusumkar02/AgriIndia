@@ -73,6 +73,9 @@ public class AddressActivity extends AppCompatActivity {
                 DatabaseReference ref = firebaseDatabase.getReference("users");
                 ref.child(username).child("address").setValue(add);
 
+                DatabaseReference referenceCart = firebaseDatabase.getReference("Cart");
+                referenceCart.child(username).child(title).removeValue();
+
                 Intent intent = new Intent(AddressActivity.this,OrderSuccessfull.class);
                 intent.putExtra("username",username);
                 startActivity(intent);

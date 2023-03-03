@@ -2,13 +2,16 @@ package com.example.agriindia.Adapter;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
@@ -20,6 +23,12 @@ import com.example.agriindia.R;
 import com.example.agriindia.model.productModel;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.example.agriindia.MainActivity;
 
 public class CartAdapter extends FirebaseRecyclerAdapter<productModel,CartAdapter.myviewHolder> {
 
@@ -31,6 +40,7 @@ public class CartAdapter extends FirebaseRecyclerAdapter<productModel,CartAdapte
 
     @Override
     protected void onBindViewHolder(@NonNull myviewHolder holder, int position, @NonNull productModel model) {
+
         holder.title.setText(model.getTitle());
         holder.price.setText("₹"+model.getPrice());
         holder.quantity.setText(model.getQuantity());
@@ -44,6 +54,48 @@ public class CartAdapter extends FirebaseRecyclerAdapter<productModel,CartAdapte
             public void onClick(View v) {
                 AppCompatActivity activity=(AppCompatActivity)v.getContext();
                 activity.getSupportFragmentManager().beginTransaction().replace(R.id.frame_layout,new CartProductFragment(model.getTitle())).addToBackStack(null).commit();
+
+            }
+        });
+
+        holder.delete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+//                String username = MainActivity.;
+//                FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
+//                DatabaseReference reference = firebaseDatabase.getReference("Cart");
+//
+//                reference.child(username).child(model.getTitle()).removeValue();
+                //reference.child(username).child(type).child(note).removeValue();
+//
+//                AlertDialog.Builder dialog = new AlertDialog.Builder(amntT.getContext());
+//                dialog.setTitle("Delete");
+//                dialog.setMessage("Are You Sure You Want To Delete This Transaction ?");
+//
+//
+//                dialog.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+//                    @Override
+//                    public void onClick(DialogInterface dialog, int which) {
+//
+//                        FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
+//                        DatabaseReference reference = firebaseDatabase.getReference("balance");
+//
+//                        reference.child(username).child("Both").child(key).removeValue();
+//                        reference.child(username).child(type).child(note).removeValue();
+//
+//
+//                    }
+//                });
+//
+//                dialog.setNegativeButton("No", new DialogInterface.OnClickListener() {
+//                    @Override
+//                    public void onClick(DialogInterface dialog, int which) {
+//                        dialog.dismiss();
+//                    }
+//                });
+//                dialog.show();
+
 
             }
         });
