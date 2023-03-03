@@ -11,7 +11,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 
-import com.airbnb.lottie.LottieAnimationView;
+import com.example.agriindia.LoginSignUp.LoginandSignupPage;
 import com.google.android.material.button.MaterialButton;
 
 import java.util.ArrayList;

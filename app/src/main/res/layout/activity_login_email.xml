@@ -8,7 +8,7 @@
     android:background="#FFFFFF"
     android:focusableInTouchMode="true"
     android:gravity="center"
-    tools:context=".LoginEmailActivity">
+    tools:context=".LoginSignUp.LoginEmailActivity">
 
     <ScrollView
         android:layout_width="match_parent"
@@ -47,15 +47,16 @@
             </RelativeLayout>
 
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/textInputEmail"
+                android:id="@+id/textInputUsername"
                 style="@style/parent"
                 android:layout_marginTop="80dp">
 
                 <EditText
-                    android:id="@+id/editTextEmail"
+                    android:textSize="15sp"
+                    android:id="@+id/editTextUsername"
                     style="@style/modifiedEditText"
-                    android:hint="@string/login_email_hint"
-                    android:inputType="textEmailAddress"
+                    android:hint="@string/login_username_hint"
+                    android:inputType="text"
                     android:maxLines="1" />
 
             </com.google.android.material.textfield.TextInputLayout>
@@ -66,6 +67,7 @@
                 android:layout_marginTop="@dimen/loginViewsMargin">
 
                 <EditText
+                    android:textSize="15sp"
                     android:id="@+id/editTextPassword"
                     style="@style/modifiedEditText"
                     android:hint="@string/login_password_hint"
@@ -104,6 +106,7 @@
                 android:id="@+id/loginButton"
                 android:layout_width="150dp"
                 android:layout_height="40dp"
+                android:onClick="loginUser"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="@dimen/loginViewsMargin"
                 android:background="@drawable/button_background_blue"

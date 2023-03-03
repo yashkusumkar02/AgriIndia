@@ -8,7 +8,7 @@
     android:background="@color/register_bk_color"
     android:focusableInTouchMode="true"
     android:gravity="center"
-    tools:context=".RegisterEmailActivity">
+    tools:context=".LoginSignUp.RegisterEmailActivity">
     
     <ScrollView
         android:layout_width="match_parent"
@@ -65,6 +65,7 @@
                         android:layout_marginTop="@dimen/loginViewsMargin">
                         
                         <EditText
+                            android:textSize="15sp"
                             android:id="@+id/editTextName"
                             style="@style/modifiedEditText"
                             android:hint="Name"
@@ -81,6 +82,7 @@
                         android:layout_marginTop="@dimen/loginViewsMargin">
 
                         <EditText
+                            android:textSize="15sp"
                             android:id="@+id/editTextPhone"
                             style="@style/modifiedEditText"
                             android:hint="Phone Number"
@@ -97,6 +99,7 @@
                         android:layout_marginTop="@dimen/loginViewsMargin">
 
                         <EditText
+                            android:textSize="15sp"
                             android:id="@+id/editTextEmail"
                             style="@style/modifiedEditText"
                             android:hint="Email Address"
@@ -108,14 +111,17 @@
                     </com.google.android.material.textfield.TextInputLayout>
 
                     <com.google.android.material.textfield.TextInputLayout
-                        android:id="@+id/textInputCity"
+                        android:id="@+id/textInputUsername"
                         style="@style/parent"
+                        app:counterEnabled="true"
+                        app:counterMaxLength="15"
                         android:layout_marginTop="@dimen/loginViewsMargin">
 
                         <EditText
-                            android:id="@+id/editTextCity"
+                            android:textSize="15sp"
+                            android:id="@+id/editTextUsername"
                             style="@style/modifiedEditText"
-                            android:hint="City"
+                            android:hint="Username"
                             android:inputType="text"
                             android:maxLines="1"/>
 
@@ -126,9 +132,11 @@
                     <com.google.android.material.textfield.TextInputLayout
                         android:id="@+id/textInputPassword"
                         style="@style/parent"
+                        app:passwordToggleEnabled="true"
                         android:layout_marginTop="@dimen/loginViewsMargin">
 
                         <EditText
+                            android:textSize="15sp"
                             android:id="@+id/editTextPassword"
                             style="@style/modifiedEditText"
                             android:hint="Password"
@@ -146,6 +154,7 @@
                         android:layout_height="50dp"
                         android:background="@drawable/button_background_blue"
                         android:textColor="@color/white"
+                        android:onClick="registerUser"
                         android:layout_gravity="center_horizontal"
                         android:layout_marginTop="@dimen/loginViewsMargin"
                         android:text="Register"/>
@@ -153,7 +162,7 @@
                     <TextView
                         android:id="@+id/alreadyhaveAccounttext"
                         style="@style/parent"
-                        android:layout_marginTop="@dimen/loginViewsMargin"
+                        android:layout_marginTop="@dimen/registerViewsMargin"
                         android:onClick="onLoginClick"
                         android:text="Already have an Account?"
                         android:textAlignment="center"

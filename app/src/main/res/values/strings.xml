@@ -6,5 +6,6 @@
     <string name="navigation_open">Open Navigation Drawer</string>
     <string name="navigation_close">Close Navigation Drawer</string>
     <string name="login_email_hint">Email</string>
+    <string name="login_username_hint">Username</string>
     <string name="login_password_hint">Password</string>
 </resources>

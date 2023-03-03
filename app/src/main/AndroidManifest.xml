@@ -20,25 +20,25 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
-            android:name=".SetNewPassword"
+            android:name=".LoginSignUp.SetNewPassword"
             android:exported="false" />
         <activity
-            android:name=".MakeSelection"
+            android:name=".LoginSignUp.MakeSelection"
             android:exported="false" />
         <activity
-            android:name=".ForgetPassword"
+            android:name=".LoginSignUp.ForgetPassword"
             android:exported="false" />
         <activity
-            android:name=".VerifyOTP"
+            android:name=".LoginSignUp.VerifyOTP"
             android:exported="false" />
         <activity
-            android:name=".RegisterEmailActivity"
+            android:name=".LoginSignUp.RegisterEmailActivity"
             android:exported="false" />
         <activity
-            android:name=".LoginEmailActivity"
+            android:name=".LoginSignUp.LoginEmailActivity"
             android:exported="false" />
         <activity
-            android:name=".LoginandSignupPage"
+            android:name=".LoginSignUp.LoginandSignupPage"
             android:exported="false" />
         <activity
             android:name=".OnBoardScreen"
@@ -46,22 +46,22 @@
         <activity
             android:name=".SplashScreen"
             android:exported="true">
-<!--            <intent-filter>-->
-<!--                <action android:name="android.intent.action.MAIN" />-->
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
-<!--                <category android:name="android.intent.category.LAUNCHER" />-->
-<!--            </intent-filter>-->
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
         <activity
             android:name=".MainActivity"
             android:exported="true">
 
-             <intent-filter>
-             <action android:name="android.intent.action.MAIN" />
+<!--             <intent-filter>-->
+<!--             <action android:name="android.intent.action.MAIN" />-->
 
 
-             <category android:name="android.intent.category.LAUNCHER" />
-             </intent-filter>
+<!--             <category android:name="android.intent.category.LAUNCHER" />-->
+<!--             </intent-filter>-->
         </activity>
 
         <meta-data

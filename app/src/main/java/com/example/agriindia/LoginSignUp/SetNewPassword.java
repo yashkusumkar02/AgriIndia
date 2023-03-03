@@ -1,8 +1,10 @@
-package com.example.agriindia;
+package com.example.agriindia.LoginSignUp;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+
+import com.example.agriindia.R;
 
 public class SetNewPassword extends AppCompatActivity {
 
