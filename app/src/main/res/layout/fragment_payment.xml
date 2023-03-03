@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Fragments.PaymentFragment">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"
+            android:background="@color/app"
+            android:theme="@style/Theme.AppCompat.Light.DarkActionBar"
+            app:title="Payment Method"
+            app:titleMarginStart="10dp"
+            app:titleTextColor="@color/white" />
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#EDE8E9"
+            android:orientation="vertical"
+            android:padding="20dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:text="MORE WAY TO PAY :"
+                android:textColor="@color/black"
+                android:textSize="18sp" />
+
+            <RadioGroup
+                android:id="@+id/payment"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="40dp">
+
+                <RadioButton
+                    android:layout_width="match_parent"
+                    android:layout_height="80dp"
+                    android:background="@color/white"
+                    android:elevation="5dp"
+                    android:enabled="false"
+                    android:fontFamily="@font/antic"
+                    android:text="UPI"
+                    android:textColor="@color/gray"
+                    android:textSize="20dp" />
+
+                <RadioButton
+                    android:layout_width="match_parent"
+                    android:layout_height="80dp"
+                    android:layout_marginTop="10dp"
+                    android:background="@color/white"
+                    android:elevation="5dp"
+                    android:enabled="false"
+                    android:fontFamily="@font/antic"
+                    android:text="Netbanking"
+                    android:textColor="@color/gray"
+                    android:textSize="20dp" />
+
+                <RadioButton
+                    android:layout_width="match_parent"
+                    android:layout_height="80dp"
+                    android:layout_marginTop="10dp"
+                    android:background="@color/white"
+                    android:elevation="5dp"
+                    android:enabled="false"
+                    android:fontFamily="@font/antic"
+                    android:text="Add Debit/Credit/ATM Card"
+                    android:textColor="@color/gray"
+                    android:textSize="20dp" />
+
+                <RadioButton
+                    android:id="@+id/cod"
+                    android:layout_width="match_parent"
+                    android:layout_height="80dp"
+                    android:layout_marginTop="25dp"
+                    android:layout_marginBottom="10dp"
+                    android:background="@color/white"
+                    android:elevation="5dp"
+                    android:fontFamily="@font/antic"
+                    android:text="Cash on Delivery"
+                    android:textColor="@color/black"
+                    android:textSize="20dp" />
+            </RadioGroup>
+
+            <android.widget.Button
+                android:id="@+id/place_order"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="40dp"
+                android:background="@color/app"
+                android:elevation="8dp"
+                android:text="PLACE ORDER"
+                android:textColor="@color/white"
+                android:textSize="20sp" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+</FrameLayout>

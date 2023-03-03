@@ -15,6 +15,7 @@ import android.widget.TextView;
 
 import com.example.agriindia.R;
 import com.example.agriindia.UserHelperClass;
+import com.example.agriindia.model.cartModel;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.auth.FirebaseAuth;
@@ -166,10 +167,12 @@ public class RegisterEmailActivity extends AppCompatActivity {
         String phoneNo = regphonenumber.getEditText().getText().toString();
         String password = regpassword.getEditText().getText().toString();
 
+
+
+        FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
+        DatabaseReference reference = firebaseDatabase.getReference("users");
         UserHelperClass helperClass = new UserHelperClass( name, username, email, phoneNo, password);
-
-        reference=rootNode.getReference("users").child(username).setValue(helperClass);
-
+        reference.child(username).setValue(helperClass);
 
     }
 

@@ -20,25 +20,25 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
-            android:name=".LoginSignUp.SetNewPassword"
+            android:name=".SetNewPassword"
             android:exported="false" />
         <activity
-            android:name=".LoginSignUp.MakeSelection"
+            android:name=".MakeSelection"
             android:exported="false" />
         <activity
-            android:name=".LoginSignUp.ForgetPassword"
+            android:name=".ForgetPassword"
             android:exported="false" />
         <activity
-            android:name=".LoginSignUp.VerifyOTP"
+            android:name=".VerifyOTP"
             android:exported="false" />
         <activity
-            android:name=".LoginSignUp.RegisterEmailActivity"
+            android:name=".RegisterEmailActivity"
             android:exported="false" />
         <activity
-            android:name=".LoginSignUp.LoginEmailActivity"
+            android:name=".LoginEmailActivity"
             android:exported="false" />
         <activity
-            android:name=".LoginSignUp.LoginandSignupPage"
+            android:name=".LoginandSignupPage"
             android:exported="false" />
         <activity
             android:name=".OnBoardScreen"

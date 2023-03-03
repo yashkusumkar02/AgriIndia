@@ -1,5 +1,6 @@
 package com.example.agriindia.Fragments;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -14,12 +15,19 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
+import com.example.agriindia.PaymentActivity;
 import com.example.agriindia.R;
+import com.example.agriindia.model.cartModel;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Locale;
+import java.util.Random;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -33,7 +41,10 @@ public class CartProductFragment extends Fragment {
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
 
-    public String title2,price1,purl1,desc,quntity1;
+    long orderID;
+    Random rd;
+    int k;
+    public String title2,price1,purl1,desc,quntity1,date;
 
     // TODO: Rename and change types of parameters
     private String mParam1;
@@ -109,7 +120,7 @@ public class CartProductFragment extends Fragment {
 
                         int i = Integer.parseInt(price1);
                         int j = Integer.parseInt(quntity1);
-                        int k = i*j;
+                         k = i*j;
                         //Toast.makeText(getContext(),k , Toast.LENGTH_SHORT).show();
 
                         title1.setText(title2);
@@ -118,20 +129,49 @@ public class CartProductFragment extends Fragment {
                         quantity.setText(quntity1);
                         total.setText(String.valueOf(k));
 
+                        SimpleDateFormat sd = new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault());
+                        date = sd.format(new Date());
 
-//                        total.setText(k);
+                        rd = new Random(); // creating Random object
+                        orderID = (rd.nextInt(1000000000));
+                       // Toast.makeText(getContext(),String.valueOf(a), Toast.LENGTH_SHORT).show();
 //
                         Glide.with(getContext())
                                 .asBitmap()
                                 .load(purl1)
                                 .into(image);
 
+                        order.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+//                                FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
+//                                DatabaseReference reference = firebaseDatabase.getReference("Order");
+//                                cartModel helper = new cartModel(purl1,price1,title2,desc,quntity1,String.valueOf(k),date,String.valueOf(orderID));
+//
+//                                reference.child("Test").child(title2).setValue(helper);
+//
+//                                Toast.makeText(getActivity(), "Order Has Been Placed..!", Toast.LENGTH_SHORT).show();
+                                Intent intent = new Intent(getActivity(), PaymentActivity.class);
+                                intent.putExtra("purl",purl1);
+                                intent.putExtra("price",price1);
+                                intent.putExtra("title",title2);
+                                intent.putExtra("desc",desc);
+                                intent.putExtra("quantity",quntity1);
+                                intent.putExtra("total",String.valueOf(k));
+                                intent.putExtra("date",date);
+                                intent.putExtra("orderID",String.valueOf(orderID));
+                                intent.putExtra("username","Test");
+                                intent.putExtra("title",title2);
+                                intent.putExtra("desc",desc);
+                                startActivity(intent);
+                                getActivity().finish();
+                            }
+                        });
+
                     }
                 }
             }
         });
-
-
 
         return view;
     }
