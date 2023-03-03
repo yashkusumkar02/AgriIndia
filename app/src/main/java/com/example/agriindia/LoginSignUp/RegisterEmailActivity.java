@@ -181,9 +181,9 @@ public class RegisterEmailActivity extends AppCompatActivity {
         FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
         DatabaseReference reference = firebaseDatabase.getReference("users");
 
-        //Stroing Data in Firebase
-        //UserHelperClass helperClass = new UserHelperClass( name, username, email, phoneNo, password,address);
-       // reference.child(username).setValue(helperClass);
+//        Stroing Data in Firebase
+        UserHelperClass helperClass = new UserHelperClass( name, username, email, phoneNo, password,address);
+        reference.child(username).setValue(helperClass);
 
 //        Intent intent = new Intent(getApplicationContext(), LoginEmailActivity.class);
 //        startActivity(intent);
