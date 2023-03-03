@@ -27,7 +27,7 @@ import java.util.ArrayList;
 
 
 public class HomeFragment extends Fragment {
-
+    String username;
     ProductAdapter productAdapter;
     RecyclerView recyclerViewProducts;
     ImageView banner;
@@ -105,6 +105,7 @@ public class HomeFragment extends Fragment {
                         .setQuery(FirebaseDatabase.getInstance().getReference("Products"),productModel.class)
                         .build();
 
+        username = getActivity().getIntent().getStringExtra("username");
 
         productAdapter = new ProductAdapter(options);
         recyclerViewProducts.setAdapter(productAdapter);
@@ -120,7 +121,6 @@ public class HomeFragment extends Fragment {
         });
 
         ImageView cart = view.findViewById(R.id.cartBtn);
-        String username = "Test";
         cart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

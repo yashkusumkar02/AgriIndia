@@ -145,7 +145,7 @@ public class ProductFragment extends Fragment {
             }
         });
 
-        String username = "Test";
+        final String username = getActivity().getIntent().getStringExtra("username");
 
 
         cart.setOnClickListener(new View.OnClickListener() {
