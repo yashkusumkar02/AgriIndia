@@ -13,6 +13,7 @@ import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.example.agriindia.MainActivity;
 import com.example.agriindia.R;
 import com.example.agriindia.UserHelperClass;
 import com.example.agriindia.model.cartModel;
@@ -168,11 +169,17 @@ public class RegisterEmailActivity extends AppCompatActivity {
         String password = regpassword.getEditText().getText().toString();
 
 
+        String address = "Enter your address";
 
         FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
         DatabaseReference reference = firebaseDatabase.getReference("users");
-        UserHelperClass helperClass = new UserHelperClass( name, username, email, phoneNo, password);
+        UserHelperClass helperClass = new UserHelperClass( name, username, email, phoneNo, password,address);
         reference.child(username).setValue(helperClass);
+
+        Intent intent = new Intent(RegisterEmailActivity.this, MainActivity.class);
+        intent.putExtra("username",username);
+        startActivity(intent);
+        finish();
 
     }
 

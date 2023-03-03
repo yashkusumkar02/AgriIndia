@@ -2,17 +2,26 @@ package com.example.agriindia;
 
 public class UserHelperClass {
 
-    String name, username, email, phoneNo, password;
+    String name, username, email, phoneNo, password,address;
 
     public UserHelperClass() {
     }
 
-    public UserHelperClass(String name, String username, String email, String phoneNo, String password) {
+    public UserHelperClass(String name, String username, String email, String phoneNo, String password,String address) {
         this.name = name;
         this.username = username;
         this.email = email;
         this.phoneNo = phoneNo;
         this.password = password;
+        this.address = address;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
     }
 
     public String getName() {
