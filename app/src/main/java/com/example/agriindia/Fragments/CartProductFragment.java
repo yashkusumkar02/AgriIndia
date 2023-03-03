@@ -33,7 +33,7 @@ public class CartProductFragment extends Fragment {
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
 
-    String title2,price1,purl1,desc,quntity1;
+    public String title2,price1,purl1,desc,quntity1;
 
     // TODO: Rename and change types of parameters
     private String mParam1;
@@ -107,15 +107,18 @@ public class CartProductFragment extends Fragment {
                         desc = String.valueOf(dataSnapshot.child("desc").getValue());
                         quntity1 = String.valueOf(dataSnapshot.child("quantity").getValue());
 
+                        int i = Integer.parseInt(price1);
+                        int j = Integer.parseInt(quntity1);
+                        int k = i*j;
+                        //Toast.makeText(getContext(),k , Toast.LENGTH_SHORT).show();
+
                         title1.setText(title2);
                         price.setText("₹ "+price1);
                         description.setText(desc);
                         quantity.setText(quntity1);
+                        total.setText(String.valueOf(k));
 
-                        int i = Integer.parseInt(price1);
-                        int j = Integer.parseInt(quntity1);
-                        int k = i*j;
-                        Toast.makeText(getActivity(),k , Toast.LENGTH_SHORT).show();
+
 //                        total.setText(k);
 //
                         Glide.with(getContext())
