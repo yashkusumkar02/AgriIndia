@@ -40,7 +40,7 @@ public class CartProductFragment extends Fragment {
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
-
+    String username;
     long orderID;
     Random rd;
     int k;
@@ -103,10 +103,11 @@ public class CartProductFragment extends Fragment {
         image = view.findViewById(R.id.image);
 
         order = view.findViewById(R.id.orderBtn);
+         username = getActivity().getIntent().getStringExtra("username");
 
         DatabaseReference reference;
         reference = FirebaseDatabase.getInstance().getReference("Cart");
-        reference.child("Test").child(title).get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
+        reference.child(username).child(title).get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
             @Override
             public void onComplete(@NonNull Task<DataSnapshot> task) {
                 if (task.isSuccessful()){
@@ -160,7 +161,7 @@ public class CartProductFragment extends Fragment {
                                 intent.putExtra("total",String.valueOf(k));
                                 intent.putExtra("date",date);
                                 intent.putExtra("orderID",String.valueOf(orderID));
-                                intent.putExtra("username","Test");
+                                intent.putExtra("username",username);
                                 intent.putExtra("title",title2);
                                 intent.putExtra("desc",desc);
                                 startActivity(intent);
