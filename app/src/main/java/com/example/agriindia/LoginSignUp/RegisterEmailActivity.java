@@ -172,6 +172,11 @@ public class RegisterEmailActivity extends AppCompatActivity {
         String address = "Enter your address";
 
 
+        Intent intent = new Intent(getApplicationContext(),VerifyOTP.class);
+        intent.putExtra("phoneNo", phoneNo);
+        startActivity(intent);
+
+
 
         FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
         DatabaseReference reference = firebaseDatabase.getReference("users");
@@ -180,9 +185,9 @@ public class RegisterEmailActivity extends AppCompatActivity {
         //UserHelperClass helperClass = new UserHelperClass( name, username, email, phoneNo, password,address);
        // reference.child(username).setValue(helperClass);
 
-        Intent intent = new Intent(getApplicationContext(), LoginEmailActivity.class);
-        startActivity(intent);
-        finish();
+//        Intent intent = new Intent(getApplicationContext(), LoginEmailActivity.class);
+//        startActivity(intent);
+//        finish();
 
     }
 

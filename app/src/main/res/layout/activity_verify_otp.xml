@@ -53,6 +53,7 @@
             android:textSize="16sp" />
 
         <com.chaos.view.PinView
+            android:id="@+id/verifyOTPuser"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
