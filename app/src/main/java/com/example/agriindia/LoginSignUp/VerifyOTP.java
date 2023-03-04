@@ -63,12 +63,13 @@ public class VerifyOTP extends AppCompatActivity {
     private void sendVerificationCodeToUser(String phoneNo) {
 
         PhoneAuthProvider.getInstance().verifyPhoneNumber(
-                phoneNo,
+                "+91" + phoneNo,
                 60,
                 TimeUnit.SECONDS,
                 (Activity) TaskExecutors.MAIN_THREAD,
                 mCallbacks
         );
+
 
     }
 
