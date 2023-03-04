@@ -62,39 +62,33 @@ public class CartAdapter extends FirebaseRecyclerAdapter<productModel,CartAdapte
             @Override
             public void onClick(View v) {
 
-//                String username = MainActivity.;
-//                FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
-//                DatabaseReference reference = firebaseDatabase.getReference("Cart");
-//
-//                reference.child(username).child(model.getTitle()).removeValue();
-                //reference.child(username).child(type).child(note).removeValue();
-//
-//                AlertDialog.Builder dialog = new AlertDialog.Builder(amntT.getContext());
-//                dialog.setTitle("Delete");
-//                dialog.setMessage("Are You Sure You Want To Delete This Transaction ?");
-//
-//
-//                dialog.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
-//                    @Override
-//                    public void onClick(DialogInterface dialog, int which) {
-//
-//                        FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
-//                        DatabaseReference reference = firebaseDatabase.getReference("balance");
-//
-//                        reference.child(username).child("Both").child(key).removeValue();
-//                        reference.child(username).child(type).child(note).removeValue();
-//
-//
-//                    }
-//                });
-//
-//                dialog.setNegativeButton("No", new DialogInterface.OnClickListener() {
-//                    @Override
-//                    public void onClick(DialogInterface dialog, int which) {
-//                        dialog.dismiss();
-//                    }
-//                });
-//                dialog.show();
+                AlertDialog.Builder dialog = new AlertDialog.Builder(context);
+                dialog.setTitle("Delete");
+                dialog.setMessage("Are You Sure You Want To Remove This Item ?");
+
+
+                dialog.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+
+                        MainActivity mainActivity = new MainActivity();
+                        String username = mainActivity.username;
+                        FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
+                        DatabaseReference reference = firebaseDatabase.getReference("Cart");
+
+                        reference.child(username).child(model.getTitle()).removeValue();
+
+
+                    }
+                });
+
+                dialog.setNegativeButton("No", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                    }
+                });
+                dialog.show();
 
 
             }

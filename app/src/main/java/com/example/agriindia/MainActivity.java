@@ -24,7 +24,7 @@ import com.google.android.material.navigation.NavigationView;
 
 public class MainActivity extends AppCompatActivity {
     FrameLayout frameLayout;
-    String username;
+    public String username;
     MeowBottomNavigation bottomNavigation;
     Toolbar toolbar;
     DrawerLayout drawerLayout;
@@ -35,8 +35,8 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);//  set status text dark
-        getWindow().setStatusBarColor(ContextCompat.getColor(MainActivity.this,R.color.white));
+        getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LIGHT_NAVIGATION_BAR);//  set status text white
+        getWindow().setStatusBarColor(ContextCompat.getColor(MainActivity.this,R.color.app2));
         //Bottom Navigation Drawer
         username = getIntent().getStringExtra("username");
 

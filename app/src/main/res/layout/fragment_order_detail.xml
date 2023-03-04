@@ -1,0 +1,362 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginBottom="50dp"
+    tools:context=".Fragments.OrderDetailFragment">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"
+            android:background="@color/app"
+            android:theme="@style/Theme.AppCompat.Light.DarkActionBar"
+            app:title="Your Order"
+            app:titleMarginStart="10dp"
+            app:titleTextColor="@color/white" />
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/card"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginRight="20dp"
+                    android:layout_marginBottom="20dp"
+                    android:elevation="15dp"
+                    app:cardCornerRadius="20dp"
+                    app:cardElevation="5dp">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@color/white"
+                        android:padding="20dp">
+
+                        <ImageView
+                            android:id="@+id/image"
+                            android:layout_width="70dp"
+                            android:layout_height="70dp"
+                            android:layout_alignParentRight="true"
+                            android:src="@mipmap/ic_launcher" />
+
+                        <TextView
+                            android:id="@+id/title"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/amaranth"
+                            android:text="Title"
+                            android:textColor="@color/black2"
+                            android:textSize="22sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/dateText"
+                            android:layout_width="130dp"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/title"
+                            android:layout_marginTop="8dp"
+                            android:fontFamily="@font/antic"
+                            android:text="Order date  "
+                            android:textColor="@color/black2"
+                            android:textSize="17sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/date"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/title"
+                            android:layout_marginTop="8dp"
+                            android:layout_toRightOf="@+id/dateText"
+                            android:fontFamily="@font/antic"
+                            android:text="0"
+                            android:textColor="@color/black2"
+                            android:textSize="17sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/orderText"
+                            android:layout_width="130dp"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/dateText"
+                            android:layout_marginTop="5dp"
+                            android:fontFamily="@font/antic"
+                            android:text="Order number  "
+                            android:textColor="@color/black2"
+                            android:textSize="17sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/orderID"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/dateText"
+                            android:layout_marginTop="5dp"
+                            android:layout_toRightOf="@+id/orderText"
+                            android:fontFamily="@font/antic"
+                            android:text="0"
+                            android:textColor="@color/black2"
+                            android:textSize="17sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/totalText"
+                            android:layout_width="130dp"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/orderText"
+                            android:layout_marginTop="5dp"
+                            android:fontFamily="@font/antic"
+                            android:text="Total Amount  "
+                            android:textColor="@color/black2"
+                            android:textSize="17sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/total"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/orderText"
+                            android:layout_marginTop="5dp"
+                            android:layout_toRightOf="@+id/totalText"
+                            android:fontFamily="@font/antic"
+                            android:text="0"
+                            android:textColor="@color/black2"
+                            android:textSize="17sp"
+                            android:textStyle="bold" />
+
+
+                        <TextView
+                            android:id="@+id/modeText"
+                            android:layout_width="130dp"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/totalText"
+                            android:layout_marginTop="5dp"
+                            android:fontFamily="@font/antic"
+                            android:text="Payment Mode  "
+                            android:textColor="@color/black2"
+                            android:textSize="17sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/mode"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/totalText"
+                            android:layout_marginTop="5dp"
+                            android:layout_toRightOf="@+id/modeText"
+                            android:fontFamily="@font/antic"
+                            android:text="0"
+                            android:textColor="@color/black2"
+                            android:textSize="17sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/statusText"
+                            android:layout_width="130dp"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/modeText"
+                            android:layout_marginTop="5dp"
+                            android:fontFamily="@font/antic"
+                            android:text="Delivery Status  "
+                            android:textColor="@color/black2"
+                            android:textSize="17sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/status"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/modeText"
+                            android:layout_marginTop="5dp"
+                            android:layout_toRightOf="@+id/statusText"
+                            android:fontFamily="@font/antic"
+                            android:text="0"
+                            android:textColor="@color/black2"
+                            android:textSize="17sp"
+                            android:textStyle="bold" />
+
+
+                        <TextView
+                            android:id="@+id/quantityText"
+                            android:layout_width="130dp"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/statusText"
+                            android:layout_marginTop="5dp"
+                            android:fontFamily="@font/antic"
+                            android:text="Quantity  "
+                            android:textColor="@color/black2"
+                            android:textSize="17sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/quantity"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/status"
+                            android:layout_marginTop="5dp"
+                            android:layout_toRightOf="@+id/quantityText"
+                            android:fontFamily="@font/antic"
+                            android:text="0"
+                            android:textColor="@color/black2"
+                            android:textSize="17sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/descText"
+                            android:layout_width="130dp"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/quantityText"
+                            android:layout_marginTop="5dp"
+                            android:fontFamily="@font/antic"
+                            android:text="Description  "
+                            android:textColor="@color/black2"
+                            android:textSize="17sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/desc"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/quantityText"
+                            android:layout_marginTop="5dp"
+                            android:layout_toRightOf="@+id/descText"
+                            android:fontFamily="@font/antic"
+                            android:text="0"
+                            android:textColor="@color/black2"
+                            android:textSize="17sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/customerText"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/desc"
+                            android:layout_marginTop="30dp"
+                            android:fontFamily="@font/amaranth"
+                            android:text="Costumer Details :"
+                            android:textColor="@color/black2"
+                            android:textSize="15sp"
+                            android:textStyle="bold" />
+
+
+                        <TextView
+                            android:id="@+id/nameText"
+                            android:layout_width="130dp"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/customerText"
+                            android:layout_marginTop="10dp"
+                            android:fontFamily="@font/antic"
+                            android:text="Name  "
+                            android:textColor="@color/black2"
+                            android:textSize="15sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/name"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/customerText"
+                            android:layout_marginTop="10dp"
+                            android:layout_toRightOf="@+id/nameText"
+                            android:fontFamily="@font/antic"
+                            android:text="0"
+                            android:textColor="@color/black2"
+                            android:textSize="15sp"
+                            android:textStyle="bold" />
+
+
+                        <TextView
+                            android:id="@+id/emailText"
+                            android:layout_width="130dp"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/nameText"
+                            android:layout_marginTop="3dp"
+                            android:fontFamily="@font/antic"
+                            android:text="Email  "
+                            android:textColor="@color/black2"
+                            android:textSize="15sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/email"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/nameText"
+                            android:layout_marginTop="3dp"
+                            android:layout_toRightOf="@+id/emailText"
+                            android:fontFamily="@font/antic"
+                            android:text="0"
+                            android:textColor="@color/black2"
+                            android:textSize="15sp"
+                            android:textStyle="bold" />
+
+
+                        <TextView
+                            android:id="@+id/addressText"
+                            android:layout_width="130dp"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/email"
+                            android:layout_marginTop="3dp"
+                            android:fontFamily="@font/antic"
+                            android:text="Address  "
+                            android:textColor="@color/black2"
+                            android:textSize="15sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/address"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/email"
+                            android:layout_marginTop="3dp"
+                            android:layout_toRightOf="@+id/addressText"
+                            android:fontFamily="@font/antic"
+                            android:text="0"
+                            android:textColor="@color/black2"
+                            android:textSize="15sp"
+                            android:textStyle="bold" />
+
+
+                        <android.widget.Button
+                            android:id="@+id/cancleBtn"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/address"
+                            android:layout_marginTop="30dp"
+                            android:background="@drawable/border_button"
+                            android:clickable="true"
+                            android:fontFamily="@font/amaranth"
+                            android:text="Cancel Order"
+                            android:textColor="@color/black2"
+                            android:textSize="18sp"
+                            android:textStyle="bold" />
+                    </RelativeLayout>
+
+
+                </androidx.cardview.widget.CardView>
+
+
+            </LinearLayout>
+        </ScrollView>
+    </LinearLayout>
+</FrameLayout>

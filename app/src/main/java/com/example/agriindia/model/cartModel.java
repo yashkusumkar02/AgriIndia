@@ -1,8 +1,16 @@
 package com.example.agriindia.model;
 
 public class cartModel {
-    String purl,price,title,desc,quantity,total,date,orderID,payment,address;
+    String purl,price,title,desc,quantity,total,date,orderID,payment,address,status;
     cartModel(){}
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
 
     public String getAddress() {
         return address;
@@ -84,7 +92,7 @@ public class cartModel {
         this.quantity = quantity;
     }
 
-    public cartModel(String purl, String price, String title, String desc, String quantity, String total, String date,String orderID,String payment,String address) {
+    public cartModel(String purl, String price, String title, String desc, String quantity, String total, String date,String orderID,String payment,String address,String status) {
         this.purl = purl;
         this.price = price;
         this.title = title;
@@ -95,6 +103,7 @@ public class cartModel {
         this.orderID = orderID;
         this.payment = payment;
         this.address = address;
+        this.status = status;
     }
 
 }

@@ -65,9 +65,10 @@ public class AddressActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 String add = address.getText().toString();
+                String status = "Pending";
                 FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
                 DatabaseReference reference = firebaseDatabase.getReference("Order");
-                cartModel helper = new cartModel(purl,price,title,desc,quantity,total,date,orderID,payment,add);
+                cartModel helper = new cartModel(purl,price,title,desc,quantity,total,date,orderID,payment,add,status);
                 reference.child(username).child(title).setValue(helper);
 
                 DatabaseReference ref = firebaseDatabase.getReference("users");

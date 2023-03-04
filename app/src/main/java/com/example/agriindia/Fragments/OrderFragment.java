@@ -3,12 +3,20 @@ package com.example.agriindia.Fragments;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.example.agriindia.Adapter.CartAdapter;
+import com.example.agriindia.Adapter.OrderAdapter;
 import com.example.agriindia.R;
+import com.example.agriindia.model.cartModel;
+import com.example.agriindia.model.productModel;
+import com.firebase.ui.database.FirebaseRecyclerOptions;
+import com.google.firebase.database.FirebaseDatabase;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -16,6 +24,9 @@ import com.example.agriindia.R;
  * create an instance of this fragment.
  */
 public class OrderFragment extends Fragment {
+    OrderAdapter orderAdapter;
+    RecyclerView recyclerView;
+    String username;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -61,6 +72,30 @@ public class OrderFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_order, container, false);
+        View view = inflater.inflate(R.layout.fragment_order, container, false);
+        recyclerView  = view.findViewById(R.id.orderRec);
+        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+        username = getActivity().getIntent().getStringExtra("username");
+        FirebaseRecyclerOptions<cartModel> options =
+                new FirebaseRecyclerOptions.Builder<cartModel>()
+                        .setQuery(FirebaseDatabase.getInstance().getReference("Order").child("ajay"), cartModel.class)
+                        .build();
+
+
+        orderAdapter = new OrderAdapter(options);
+        recyclerView.setAdapter(orderAdapter);
+
+        return view;
+    }
+    @Override
+    public void onStart() {
+        super.onStart();
+        orderAdapter.startListening();
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        orderAdapter.stopListening();
     }
 }
