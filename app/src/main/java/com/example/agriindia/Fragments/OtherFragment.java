@@ -8,6 +8,7 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import com.example.agriindia.R;
 import com.google.android.material.textfield.TextInputLayout;
@@ -19,7 +20,8 @@ import com.google.android.material.textfield.TextInputLayout;
  */
 public class OtherFragment extends Fragment {
 
-    TextInputLayout fullname, username, fullName, userName, emailadd, password, phoneNo;
+    TextInputLayout fullname,   userName, emailadd, password, phoneNo;
+    TextView username,fullName;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -77,29 +79,40 @@ public class OtherFragment extends Fragment {
         password=view.findViewById(R.id.password);
         phoneNo=view.findViewById(R.id.phoneNo);
 
-        
-        showAllUserData();
+        String username1= getActivity().getIntent().getStringExtra("username");
+        String name= getActivity().getIntent().getStringExtra("name");
+        String email1= getActivity().getIntent().getStringExtra("email");
+        String user_password= getActivity().getIntent().getStringExtra("password");
+        String user_phonenumber= getActivity().getIntent().getStringExtra("phoneNo");
 
+
+
+        fullname.getEditText().setText(name);
+        username.setText(username1);
+        emailadd.getEditText().setText(email1);
+        password.getEditText().setText(user_password);
+        phoneNo.getEditText().setText(user_phonenumber);
+        fullName.setText(name);
 
 
         return view;
     }
 
     private void showAllUserData() {
-
-        Intent intent = Intent.getIntent();
-        String user_username= intent.getStringExtra("username");
-        String user_name= intent.getStringExtra("name");
-        String user_email= intent.getStringExtra("email");
-        String user_phonenumber= intent.getStringExtra("phoneNo");
-        String user_password= intent.getStringExtra("password");
-
-        fullname.getEditText().setText(user_name);
-        username.getEditText().setText(user_username);
-        emailadd.getEditText().setText(user_email);
-        password.getEditText().setText(user_password);
-        phoneNo.getEditText().setText(user_phonenumber);
-        fullName.getEditText().setText(user_name);
+            String username= getActivity().getIntent().getStringExtra("username");
+//        Intent intent = Intent.ge.getIntent();
+//        String user_username= intent.getStringExtra("username");
+//        String user_name= intent.getStringExtra("name");
+//        String user_email= intent.getStringExtra("email");
+//        String user_phonenumber= intent.getStringExtra("phoneNo");
+//        String user_password= intent.getStringExtra("password");
+//
+//        fullname.getEditText().setText(user_name);
+//        username.setText(user_username);
+//        emailadd.getEditText().setText(user_email);
+//        password.getEditText().setText(user_password);
+//        phoneNo.getEditText().setText(user_phonenumber);
+//        fullName.getEditText().setText(user_name);
 
 
     }

@@ -73,12 +73,16 @@ public class OrderFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_order, container, false);
+
+
+//        String username= getActivity().getIntent().getStringExtra("username");
+
         recyclerView  = view.findViewById(R.id.orderRec);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         username = getActivity().getIntent().getStringExtra("username");
         FirebaseRecyclerOptions<cartModel> options =
                 new FirebaseRecyclerOptions.Builder<cartModel>()
-                        .setQuery(FirebaseDatabase.getInstance().getReference("Order").child("ajay"), cartModel.class)
+                        .setQuery(FirebaseDatabase.getInstance().getReference("Order").child(username), cartModel.class)
                         .build();
 
 

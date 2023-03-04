@@ -99,10 +99,10 @@ public class OrderDetailFragment extends Fragment {
         address = view.findViewById(R.id.address);
 
         image = view.findViewById(R.id.image);
-
+        String username= getActivity().getIntent().getStringExtra("username");
         DatabaseReference reference;
         reference = FirebaseDatabase.getInstance().getReference("users");
-        reference.child("ajay").get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
+        reference.child(username).get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
             @Override
             public void onComplete(@NonNull Task<DataSnapshot> task) {
                 if (task.isSuccessful()) {
@@ -122,7 +122,7 @@ public class OrderDetailFragment extends Fragment {
 
         DatabaseReference reference1;
         reference1 = FirebaseDatabase.getInstance().getReference("Order");
-        reference1.child("ajay").child(title).get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
+        reference1.child(username).child(title).get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
             @Override
             public void onComplete(@NonNull Task<DataSnapshot> task) {
                 if (task.isSuccessful()) {
@@ -170,7 +170,7 @@ public class OrderDetailFragment extends Fragment {
                         FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
                         DatabaseReference reference = firebaseDatabase.getReference("Order");
 
-                        reference.child("ajay").child(title).removeValue();
+                        reference.child(username).child(title).removeValue();
 
 
                     }
