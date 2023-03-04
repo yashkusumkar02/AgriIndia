@@ -37,7 +37,7 @@ public class LoginandSignupPage extends AppCompatActivity {
         materialButton3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent= new Intent(LoginandSignupPage.this, LoginEmailActivity.class);
+                Intent intent= new Intent(LoginandSignupPage.this, LoginPhoneActivity.class);
                 startActivity(intent);
 
             }

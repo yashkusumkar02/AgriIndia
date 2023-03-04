@@ -23,13 +23,14 @@
         tools:node="merge"
         tools:targetApi="31">
         <activity
-            android:name=".RegisterPhoneActivity"
+            android:name=".LoginSignUp.verificationPhone"
             android:exported="false" />
         <activity
-            android:name=".LoginPhoneActivity"
-            android:exported="false"
-            android:label="@string/title_activity_login_phone"
-            android:theme="@style/Theme.AgriIndia.NoActionBar" />
+            android:name=".LoginSignUp.RegisterPhoneActivity"
+            android:exported="false" />
+        <activity
+            android:name=".LoginSignUp.LoginPhoneActivity"
+            android:exported="false" />
         <activity
             android:name=".LoginSignUp.ForgetPasswordSuccessMessage"
             android:exported="false" />
