@@ -71,8 +71,8 @@ public class OtherFragment extends Fragment {
         View view= inflater.inflate(R.layout.fragment_other, container, false);
 
         fullname=view.findViewById(R.id.fullname);
-        fullName= view.findViewById(R.id.fullnameUser);
-        username=view.findViewById(R.id.usernameFull);
+//        fullName= view.findViewById(R.id.fullnameUser);
+//        username=view.findViewById(R.id.usernameFull);
         emailadd=view.findViewById(R.id.emailAdd);
         password=view.findViewById(R.id.password);
         phoneNo=view.findViewById(R.id.phoneNo);
@@ -87,7 +87,7 @@ public class OtherFragment extends Fragment {
 
     private void showAllUserData() {
 
-        Intent intent = Intent.getIntent();
+        Intent intent = getActivity().getIntent();
         String user_username= intent.getStringExtra("username");
         String user_name= intent.getStringExtra("name");
         String user_email= intent.getStringExtra("email");
@@ -95,11 +95,11 @@ public class OtherFragment extends Fragment {
         String user_password= intent.getStringExtra("password");
 
         fullname.getEditText().setText(user_name);
-        username.getEditText().setText(user_username);
+//        username.getEditText().setText(user_username);
         emailadd.getEditText().setText(user_email);
         password.getEditText().setText(user_password);
         phoneNo.getEditText().setText(user_phonenumber);
-        fullName.getEditText().setText(user_name);
+//        fullName.getEditText().setText(user_name);
 
 
     }
