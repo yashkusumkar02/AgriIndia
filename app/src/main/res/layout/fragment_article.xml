@@ -11,15 +11,13 @@
        android:layout_height="match_parent">
 
        <TextView
+           android:id="@+id/text"
            android:layout_width="match_parent"
            android:layout_height="wrap_content"
-           android:text="Hello"
-           android:textSize="30sp"
            android:layout_centerInParent="true"
-           android:layout_centerHorizontal="true"
-           android:layout_centerVertical="true"
-           android:id="@+id/text"
-           android:textColor="@color/black2"/>
+           android:text="Hello"
+           android:textColor="@color/black2"
+           android:textSize="30sp" />
    </RelativeLayout>
 
 </FrameLayout>

@@ -1,5 +1,6 @@
 package com.example.agriindia.Fragments;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -18,7 +19,7 @@ import com.google.android.material.textfield.TextInputLayout;
  */
 public class OtherFragment extends Fragment {
 
-    TextInputLayout fullname, username, fullName, userName, emailadd, password;
+    TextInputLayout fullname, username, fullName, userName, emailadd, password, phoneNo;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -66,7 +67,40 @@ public class OtherFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_other, container, false);
+
+        View view= inflater.inflate(R.layout.fragment_other, container, false);
+
+        fullname=view.findViewById(R.id.fullname);
+        fullName= view.findViewById(R.id.fullnameUser);
+        username=view.findViewById(R.id.usernameFull);
+        emailadd=view.findViewById(R.id.emailAdd);
+        password=view.findViewById(R.id.password);
+        phoneNo=view.findViewById(R.id.phoneNo);
+
+        
+        showAllUserData();
+
+
+
+        return view;
+    }
+
+    private void showAllUserData() {
+
+        Intent intent = Intent.getIntent();
+        String user_username= intent.getStringExtra("username");
+        String user_name= intent.getStringExtra("name");
+        String user_email= intent.getStringExtra("email");
+        String user_phonenumber= intent.getStringExtra("phoneNo");
+        String user_password= intent.getStringExtra("password");
+
+        fullname.getEditText().setText(user_name);
+        username.getEditText().setText(user_username);
+        emailadd.getEditText().setText(user_email);
+        password.getEditText().setText(user_password);
+        phoneNo.getEditText().setText(user_phonenumber);
+        fullName.getEditText().setText(user_name);
+
+
     }
 }

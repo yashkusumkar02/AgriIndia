@@ -117,7 +117,7 @@ public class LoginEmailActivity extends AppCompatActivity {
                         intent.putExtra("password", passwordFromDB);
                         startActivity(intent);
                     } else {
-//                     /   progressBar.setVisibility(View.GONE);
+//                      progressBar.setVisibility(View.GONE);
                         password.setError("Wrong Password");
                         password.requestFocus();
                     }

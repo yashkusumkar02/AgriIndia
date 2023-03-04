@@ -10,6 +10,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
@@ -36,12 +37,15 @@ public class VerifyOTP extends AppCompatActivity {
     ProgressBar progressBar;
     String codeBySystem;
     private FirebaseAuth mAuth;
+    ImageButton backbtn;
 
     @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_verify_otp);
+
+        backbtn=findViewById(R.id.back_verifyOTP);
 
         mAuth = FirebaseAuth.getInstance();
 
@@ -51,6 +55,15 @@ public class VerifyOTP extends AppCompatActivity {
         String phoneNo= getIntent().getStringExtra("phoneNo");
 
         sendVerificationCodeToUser(phoneNo);
+
+        backbtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent= new Intent(VerifyOTP.this, LoginEmailActivity.class);
+                startActivity(intent);
+                finish();
+            }
+        });
 
 
 

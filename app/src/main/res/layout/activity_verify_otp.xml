@@ -11,10 +11,12 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:padding="30dp">
-        <ImageView
+        <ImageButton
+            android:id="@+id/back_verifyOTP"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:onClick="goToHomeFromOTP"
+            android:background="#00000000"
             android:padding="5dp"
             android:src="@drawable/general_close_icon"
             app:tint="@color/black" />
