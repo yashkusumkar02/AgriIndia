@@ -52,4 +52,13 @@
         <item name="android:textColor">@color/colorAccent</item>
         <item name="android:paddingLeft">5dp</item>
     </style>
+
+    <style name="Theme.AgriIndia.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="Theme.AgriIndia.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="Theme.AgriIndia.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 </resources>

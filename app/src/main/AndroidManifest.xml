@@ -23,6 +23,14 @@
         tools:node="merge"
         tools:targetApi="31">
         <activity
+            android:name=".RegisterPhoneActivity"
+            android:exported="false" />
+        <activity
+            android:name=".LoginPhoneActivity"
+            android:exported="false"
+            android:label="@string/title_activity_login_phone"
+            android:theme="@style/Theme.AgriIndia.NoActionBar" />
+        <activity
             android:name=".LoginSignUp.ForgetPasswordSuccessMessage"
             android:exported="false" />
         <activity
@@ -43,7 +51,6 @@
         <activity
             android:name=".LoginSignUp.LoginEmailActivity"
             android:exported="false" />
-
         <activity
             android:name=".LoginSignUp.LoginandSignupPage"
             android:exported="true">
@@ -51,11 +58,8 @@
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
-
             </intent-filter>
         </activity>
-
-
         <activity
             android:name=".OnBoardScreen"
             android:exported="false" />
@@ -71,22 +75,24 @@
         <activity
             android:name=".SplashScreen"
             android:exported="true">
-            <!--            <intent-filter>-->
-            <!--                <action android:name="android.intent.action.MAIN" />-->
 
-            <!--                <category android:name="android.intent.category.LAUNCHER" />-->
-            <!--            </intent-filter>-->
+            <!-- <intent-filter> -->
+            <!-- <action android:name="android.intent.action.MAIN" /> -->
+
+
+            <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
+            <!-- </intent-filter> -->
         </activity>
         <activity
             android:name=".MainActivity"
             android:exported="true">
 
-            <!--             <intent-filter>-->
-            <!--             <action android:name="android.intent.action.MAIN" />-->
+            <!-- <intent-filter> -->
+            <!-- <action android:name="android.intent.action.MAIN" /> -->
 
 
-            <!--             <category android:name="android.intent.category.LAUNCHER" />-->
-            <!--             </intent-filter>-->
+            <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
+            <!-- </intent-filter> -->
         </activity>
 
         <meta-data
