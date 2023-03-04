@@ -49,7 +49,9 @@
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/textInputUsername"
                 style="@style/parent"
-                android:layout_marginTop="80dp">
+                android:layout_marginTop="80dp"
+                app:startIconDrawable="@drawable/baseline_person_24"
+                app:startIconTint="@color/black">
 
                 <EditText
                     android:textSize="15sp"
@@ -64,7 +66,11 @@
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/textInputPassword"
                 style="@style/parent"
-                android:layout_marginTop="@dimen/loginViewsMargin">
+                android:layout_marginTop="@dimen/loginViewsMargin"
+                app:startIconDrawable="@drawable/password"
+                app:endIconTint="@color/black"
+                app:startIconTint="@color/black"
+                app:endIconMode="password_toggle">
 
                 <EditText
                     android:textSize="15sp"

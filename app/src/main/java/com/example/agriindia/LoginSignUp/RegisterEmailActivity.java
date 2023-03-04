@@ -175,6 +175,7 @@ public class RegisterEmailActivity extends AppCompatActivity {
         Intent intent = new Intent(getApplicationContext(),VerifyOTP.class);
         intent.putExtra("phoneNo", phoneNo);
         startActivity(intent);
+        finish();
 
 
 

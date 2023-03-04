@@ -14,6 +14,7 @@ import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.chaos.view.PinView;
+import com.example.agriindia.MainActivity;
 import com.example.agriindia.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -34,12 +35,15 @@ public class VerifyOTP extends AppCompatActivity {
     PinView pinView;
     ProgressBar progressBar;
     String codeBySystem;
+    private FirebaseAuth mAuth;
 
     @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_verify_otp);
+
+        mAuth = FirebaseAuth.getInstance();
 
         btn1=findViewById(R.id.verifyOTP);
         pinView=findViewById(R.id.verifyOTPuser);
@@ -53,7 +57,7 @@ public class VerifyOTP extends AppCompatActivity {
         btn1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent=new Intent(VerifyOTP.this,SetNewPassword.class);
+                Intent intent=new Intent(VerifyOTP.this, MainActivity.class);
                 startActivity(intent);
                 finish();
             }
@@ -62,13 +66,13 @@ public class VerifyOTP extends AppCompatActivity {
 
     private void sendVerificationCodeToUser(String phoneNo) {
 
-        PhoneAuthProvider.getInstance().verifyPhoneNumber(
-                "+91" + phoneNo,
-                60,
-                TimeUnit.SECONDS,
-                (Activity) TaskExecutors.MAIN_THREAD,
-                mCallbacks
-        );
+        PhoneAuthOptions options = PhoneAuthOptions.newBuilder(mAuth) //mAuth is defined on top
+                .setPhoneNumber(phoneNo)       // Phone number to verify
+                .setTimeout(60L, TimeUnit.SECONDS) // Timeout and unit
+                .setActivity(this)                 // Activity (for callback binding)
+                .setCallbacks(mCallbacks)          // OnVerificationStateChangedCallbacks
+                .build();
+        PhoneAuthProvider.verifyPhoneNumber(options);
 
 
     }

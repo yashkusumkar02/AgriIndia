@@ -65,4 +65,7 @@ dependencies {
     implementation 'br.com.simplepass:loading-button-android:1.14.0'
 
     implementation 'com.chaos.view:pinview:1.4.3'
+
+    //Country Code Picker
+    implementation 'com.hbb20:ccp:2.5.4'
 }

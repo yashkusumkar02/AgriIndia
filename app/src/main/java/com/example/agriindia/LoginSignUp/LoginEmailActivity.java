@@ -25,7 +25,6 @@ public class LoginEmailActivity extends AppCompatActivity {
 
     TextInputLayout username, password;
 
-
     Button button, forgetP;
 
     @Override
@@ -42,17 +41,7 @@ public class LoginEmailActivity extends AppCompatActivity {
         forgetP.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent=new Intent(LoginEmailActivity.this,MakeSelection.class);
-                startActivity(intent);
-                finish();
-            }
-        });
-
-
-        button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent=new Intent(LoginEmailActivity.this, MainActivity.class);
+                Intent intent=new Intent(LoginEmailActivity.this,ForgetPassword.class);
                 startActivity(intent);
                 finish();
             }
@@ -95,14 +84,13 @@ public class LoginEmailActivity extends AppCompatActivity {
     public void loginUser(View view) {
         //Validate Login Info
         if (!validateUsername() | !validatePassword()) {
-            return;
         } else {
             isUser();
         }
     }
 
     private void isUser() {
-        progressBar.setVisibility(View.VISIBLE);
+//        progressBar.setVisibility(View.VISIBLE);
         final String userEnteredUsername = username.getEditText().getText().toString().trim();
         final String userEnteredPassword = password.getEditText().getText().toString().trim();
         DatabaseReference reference = FirebaseDatabase.getInstance().getReference("users");
@@ -129,12 +117,12 @@ public class LoginEmailActivity extends AppCompatActivity {
                         intent.putExtra("password", passwordFromDB);
                         startActivity(intent);
                     } else {
-                        progressBar.setVisibility(View.GONE);
+//                     /   progressBar.setVisibility(View.GONE);
                         password.setError("Wrong Password");
                         password.requestFocus();
                     }
                 } else {
-                    progressBar.setVisibility(View.GONE);
+//                    progressBar.setVisibility(View.GONE);
                     username.setError("No such User exist");
                     username.requestFocus();
                 }
@@ -149,7 +137,4 @@ public class LoginEmailActivity extends AppCompatActivity {
     }
 
 
-
-
-
-    }
+}
