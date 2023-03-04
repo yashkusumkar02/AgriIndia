@@ -32,6 +32,7 @@ public class OrderDetailFragment extends Fragment {
 
     TextView date, orderID, total, mode, status, titleText, quantity, desc, name, email, address,purl;
     ImageView image;
+    //hi
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
