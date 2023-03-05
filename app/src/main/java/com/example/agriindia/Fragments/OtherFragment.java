@@ -3,6 +3,7 @@ package com.example.agriindia.Fragments;
 import android.content.Intent;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
@@ -10,13 +11,18 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.TextView;
 
 import com.example.agriindia.LoginSignUp.LoginandSignupPage;
 import com.example.agriindia.R;
 import com.example.agriindia.UpdateProfile;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 /**
@@ -26,13 +32,15 @@ import com.google.firebase.database.FirebaseDatabase;
  */
 public class OtherFragment extends Fragment {
 
-    TextInputLayout fullname, username, fullName, userName, emailadd, password, phoneNo;
+    TextInputLayout fullname, userName, emailadd, password, phoneNo;
 
     private FirebaseAuth firebaseAuth;
 
     private Button logoutbtn;
 
     private ImageButton imageButton;
+
+    TextView username, fullName;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -81,28 +89,66 @@ public class OtherFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-        View view= inflater.inflate(R.layout.fragment_other, container, false);
+        View view = inflater.inflate(R.layout.fragment_other, container, false);
 
-        fullname=view.findViewById(R.id.fullname);
-//        fullName= view.findViewById(R.id.fullnameUser);
-//        username=view.findViewById(R.id.usernameFull);
-        emailadd=view.findViewById(R.id.emailAdd);
-        password=view.findViewById(R.id.password);
-        phoneNo=view.findViewById(R.id.phoneNo);
-        logoutbtn =(Button) view.findViewById(R.id.logoutButton);
+        fullname = view.findViewById(R.id.fullname);
+        fullName = view.findViewById(R.id.fullnameUser);
+        username = view.findViewById(R.id.usernameFull);
+        emailadd = view.findViewById(R.id.emailAdd);
+        password = view.findViewById(R.id.password);
+        phoneNo = view.findViewById(R.id.phoneNo);
+        logoutbtn = (Button) view.findViewById(R.id.logoutButton);
 
-        firebaseAuth =FirebaseAuth.getInstance();
+
+        firebaseAuth = FirebaseAuth.getInstance();
 //        checkUser();
 
-        imageButton=view.findViewById(R.id.editForm);
+        imageButton = view.findViewById(R.id.editForm);
+
+        showAllUserData();
 
         imageButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent=new Intent(getActivity(), UpdateProfile.class);
-                startActivity(intent);
+                Intent intentI = getActivity().getIntent();
+                String user_username = intentI.getStringExtra("username");
+                DatabaseReference reference;
+                reference = FirebaseDatabase.getInstance().getReference("users");
+                reference.child(user_username).get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<DataSnapshot> task) {
+                        if (task.isSuccessful()) {
+                            if (task.getResult().exists()) {
+                                DataSnapshot dataSnapshot = task.getResult();
+                                String name1 = String.valueOf(dataSnapshot.child("name").getValue());
+                                String email1 = String.valueOf(dataSnapshot.child("email").getValue());
+                                String phoneNo1 = String.valueOf(dataSnapshot.child("phoneNo").getValue());
+                                String password1 = String.valueOf(dataSnapshot.child("password").getValue());
+                                String username1 = String.valueOf(dataSnapshot.child("username").getValue());
+                                String address1 = String.valueOf(dataSnapshot.child("address").getValue());
+
+
+                                Intent intent = new Intent(getActivity(), UpdateProfile.class);
+                                intent.putExtra("username", user_username);
+                                intent.putExtra("name", name1);
+                                intent.putExtra("email", email1);
+                                intent.putExtra("phone", phoneNo1);
+                                intent.putExtra("password", password1);
+                                intent.putExtra("address", address1);
+                                startActivity(intent);
+                            }
+                        }
+                    }
+                });
+
+
+
+
+
+
             }
         });
+
 
         logoutbtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -111,43 +157,45 @@ public class OtherFragment extends Fragment {
                 startActivity(new Intent(getActivity(), LoginandSignupPage.class));
             }
         });
-        
-        showAllUserData();
+
+
 
 
         return view;
     }
 
-//    private void checkUser() {
-//        FirebaseUser firebaseUser= firebaseAuth.getCurrentUser();
-//        if (firebaseUser!=null){
-//            startActivity(new Intent(getActivity(),LoginandSignupPage.class));
-//
-//        }
-//        else {
-//            String email= firebaseUser.getEmail();
-//            emailadd.getEditText().setText(email);
-//
-//        }
-//    }
 
     private void showAllUserData() {
 
         Intent intent = getActivity().getIntent();
-        String user_username= intent.getStringExtra("username");
-        String user_name= intent.getStringExtra("name");
-        String user_email= intent.getStringExtra("email");
-        String user_phonenumber= intent.getStringExtra("phoneNo");
-        String user_password= intent.getStringExtra("password");
-
-        fullname.getEditText().setText(user_name);
-//        username.getEditText().setText(user_username);
-        emailadd.getEditText().setText(user_email);
-        password.getEditText().setText(user_password);
-        phoneNo.getEditText().setText(user_phonenumber);
-//        fullName.getEditText().setText(user_name);
+        String usernameFromDB = intent.getStringExtra("username");
 
 
+        DatabaseReference reference;
+        reference = FirebaseDatabase.getInstance().getReference("users");
+        reference.child(usernameFromDB).get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<DataSnapshot> task) {
+                if (task.isSuccessful()) {
+                    if (task.getResult().exists()) {
+                        DataSnapshot dataSnapshot = task.getResult();
+                        String name1 = String.valueOf(dataSnapshot.child("name").getValue());
+                        String email1 = String.valueOf(dataSnapshot.child("email").getValue());
+                        String phoneNo1 = String.valueOf(dataSnapshot.child("phoneNo").getValue());
+                        String password1 = String.valueOf(dataSnapshot.child("password").getValue());
+                        String username1 = String.valueOf(dataSnapshot.child("username").getValue());
+
+
+                        fullName.setText(name1);
+                        username.setText(username1);
+                        emailadd.getEditText().setText(email1);
+                        password.getEditText().setText(password1);
+                        phoneNo.getEditText().setText(phoneNo1);
+                        fullname.getEditText().setText(name1);
+                    }
+                }
+            }
+        });
     }
 
 }

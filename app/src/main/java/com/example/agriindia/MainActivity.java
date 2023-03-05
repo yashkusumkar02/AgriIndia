@@ -47,7 +47,7 @@ public class MainActivity extends AppCompatActivity {
         bottomNavigation.add(new MeowBottomNavigation.Model(2, R.drawable.baseline_groups_24));
         bottomNavigation.add(new MeowBottomNavigation.Model(3, R.drawable.baseline_timeline_24));
         bottomNavigation.add(new MeowBottomNavigation.Model(4, R.drawable.baseline_shopping_cart_24));
-        bottomNavigation.add(new MeowBottomNavigation.Model(5, R.drawable.baseline_menu_24));
+        bottomNavigation.add(new MeowBottomNavigation.Model(5, R.drawable.baseline_account_circle_24));
 
         bottomNavigation.setOnShowListener(new MeowBottomNavigation.ShowListener() {
             @Override
