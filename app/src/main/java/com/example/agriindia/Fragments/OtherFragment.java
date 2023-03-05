@@ -8,10 +8,14 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
+import android.widget.Button;
 
+import com.example.agriindia.LoginSignUp.LoginandSignupPage;
 import com.example.agriindia.R;
 import com.google.android.material.textfield.TextInputLayout;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.FirebaseDatabase;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -20,8 +24,11 @@ import com.google.android.material.textfield.TextInputLayout;
  */
 public class OtherFragment extends Fragment {
 
-    TextInputLayout fullname,   userName, emailadd, password, phoneNo;
-    TextView username,fullName;
+    TextInputLayout fullname, username, fullName, userName, emailadd, password, phoneNo;
+
+    private FirebaseAuth firebaseAuth;
+
+    private Button logoutbtn;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -73,45 +80,59 @@ public class OtherFragment extends Fragment {
         View view= inflater.inflate(R.layout.fragment_other, container, false);
 
         fullname=view.findViewById(R.id.fullname);
-        fullName= view.findViewById(R.id.fullnameUser);
-        username=view.findViewById(R.id.usernameFull);
+//        fullName= view.findViewById(R.id.fullnameUser);
+//        username=view.findViewById(R.id.usernameFull);
         emailadd=view.findViewById(R.id.emailAdd);
         password=view.findViewById(R.id.password);
         phoneNo=view.findViewById(R.id.phoneNo);
+        logoutbtn =(Button) view.findViewById(R.id.logoutButton);
 
-        String username1= getActivity().getIntent().getStringExtra("username");
-        String name= getActivity().getIntent().getStringExtra("name");
-        String email1= getActivity().getIntent().getStringExtra("email");
-        String user_password= getActivity().getIntent().getStringExtra("password");
-        String user_phonenumber= getActivity().getIntent().getStringExtra("phoneNo");
+        firebaseAuth =FirebaseAuth.getInstance();
+        checkUser();
 
+        logoutbtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                FirebaseAuth.getInstance().signOut();
+                checkUser();
+                startActivity(new Intent(getActivity(), LoginandSignupPage.class));
+            }
+        });
+        
+        showAllUserData();
 
-
-        fullname.getEditText().setText(name);
-        username.setText(username1);
-        emailadd.getEditText().setText(email1);
-        password.getEditText().setText(user_password);
-        phoneNo.getEditText().setText(user_phonenumber);
-        fullName.setText(name);
 
 
         return view;
     }
 
+    private void checkUser() {
+        FirebaseUser firebaseUser= firebaseAuth.getCurrentUser();
+        if (firebaseUser!=null){
+            startActivity(new Intent(getActivity(),LoginandSignupPage.class));
+
+        }
+        else {
+            String email= firebaseUser.getEmail();
+            emailadd.getEditText().setText(email);
+
+        }
+    }
+
     private void showAllUserData() {
-            String username= getActivity().getIntent().getStringExtra("username");
-//        Intent intent = Intent.ge.getIntent();
-//        String user_username= intent.getStringExtra("username");
-//        String user_name= intent.getStringExtra("name");
-//        String user_email= intent.getStringExtra("email");
-//        String user_phonenumber= intent.getStringExtra("phoneNo");
-//        String user_password= intent.getStringExtra("password");
-//
-//        fullname.getEditText().setText(user_name);
-//        username.setText(user_username);
-//        emailadd.getEditText().setText(user_email);
-//        password.getEditText().setText(user_password);
-//        phoneNo.getEditText().setText(user_phonenumber);
+
+        Intent intent = getActivity().getIntent();
+        String user_username= intent.getStringExtra("username");
+        String user_name= intent.getStringExtra("name");
+        String user_email= intent.getStringExtra("email");
+        String user_phonenumber= intent.getStringExtra("phoneNo");
+        String user_password= intent.getStringExtra("password");
+
+        fullname.getEditText().setText(user_name);
+//        username.getEditText().setText(user_username);
+        emailadd.getEditText().setText(user_email);
+        password.getEditText().setText(user_password);
+        phoneNo.getEditText().setText(user_phonenumber);
 //        fullName.getEditText().setText(user_name);
 
 

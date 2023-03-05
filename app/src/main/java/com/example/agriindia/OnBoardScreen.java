@@ -145,6 +145,7 @@ public class OnBoardScreen extends AppCompatActivity {
         }
         if (index== onBoardingAdapter.getItemCount()-1){
             buttonOnboardingAction.setText("Start");
+
         }
         else {
             buttonOnboardingAction.setText("Next");
