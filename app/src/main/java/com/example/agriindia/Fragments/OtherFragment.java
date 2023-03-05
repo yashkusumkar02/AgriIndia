@@ -102,7 +102,6 @@ public class OtherFragment extends Fragment {
         showAllUserData();
 
 
-
         return view;
     }
 
