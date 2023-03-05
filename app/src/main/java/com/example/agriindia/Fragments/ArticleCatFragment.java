@@ -100,9 +100,11 @@ public class ArticleCatFragment extends Fragment {
 
         ArticleCatFragment f = new ArticleCatFragment();
 
-        Bundle args = new Bundle();
-        args.putString("index", title);
-        getParentFragmentManager().setFragmentResult("index1",args);
+
+            Bundle args = new Bundle();
+            args.putString("index", title);
+            getParentFragmentManager().setFragmentResult("index1",args);
+
 //        f.setArguments(args);
         return view;
     }

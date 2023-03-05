@@ -83,8 +83,11 @@ public class ArticleDetFragment extends Fragment {
         getParentFragmentManager().setFragmentResultListener("index1", getActivity(), new FragmentResultListener() {
             @Override
             public void onFragmentResult(@NonNull String requestKey, @NonNull Bundle result) {
+
                 String data = result.getString("index");
-                //Toast.makeText(getActivity(), data, Toast.LENGTH_SHORT).show();
+                Toast.makeText(getActivity(), data, Toast.LENGTH_SHORT).show();
+
+
                 ImageView image;
                 TextView titleT,description;
 
@@ -92,7 +95,7 @@ public class ArticleDetFragment extends Fragment {
                 titleT = view.findViewById(R.id.title);
                 description = view.findViewById(R.id.desc);
 
-                String username = getActivity().getIntent().getStringExtra("username");
+                //String username = getActivity().getIntent().getStringExtra("username");
 
                 //Toast.makeText(getActivity(), title, Toast.LENGTH_SHORT).show();
                 DatabaseReference reference;
