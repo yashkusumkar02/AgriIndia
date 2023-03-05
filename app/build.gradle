@@ -78,4 +78,11 @@ dependencies {
     implementation 'com.chaos.view:pinview:1.4.4'
 
     implementation 'com.google.android.gms:play-services-auth:20.4.1'
+
+
+    //fragment
+    def fragment_version = "1.5.5"
+
+    // Java language implementation
+    implementation "androidx.fragment:fragment:$fragment_version"
 }
