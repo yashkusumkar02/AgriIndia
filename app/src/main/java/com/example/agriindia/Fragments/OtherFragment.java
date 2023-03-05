@@ -9,9 +9,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageButton;
 
 import com.example.agriindia.LoginSignUp.LoginandSignupPage;
 import com.example.agriindia.R;
+import com.example.agriindia.UpdateProfile;
 import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -29,6 +31,8 @@ public class OtherFragment extends Fragment {
     private FirebaseAuth firebaseAuth;
 
     private Button logoutbtn;
+
+    private ImageButton imageButton;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -88,13 +92,22 @@ public class OtherFragment extends Fragment {
         logoutbtn =(Button) view.findViewById(R.id.logoutButton);
 
         firebaseAuth =FirebaseAuth.getInstance();
-        checkUser();
+//        checkUser();
+
+        imageButton=view.findViewById(R.id.editForm);
+
+        imageButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(getActivity(), UpdateProfile.class);
+                startActivity(intent);
+            }
+        });
 
         logoutbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 FirebaseAuth.getInstance().signOut();
-                checkUser();
                 startActivity(new Intent(getActivity(), LoginandSignupPage.class));
             }
         });
@@ -105,18 +118,18 @@ public class OtherFragment extends Fragment {
         return view;
     }
 
-    private void checkUser() {
-        FirebaseUser firebaseUser= firebaseAuth.getCurrentUser();
-        if (firebaseUser!=null){
-            startActivity(new Intent(getActivity(),LoginandSignupPage.class));
-
-        }
-        else {
-            String email= firebaseUser.getEmail();
-            emailadd.getEditText().setText(email);
-
-        }
-    }
+//    private void checkUser() {
+//        FirebaseUser firebaseUser= firebaseAuth.getCurrentUser();
+//        if (firebaseUser!=null){
+//            startActivity(new Intent(getActivity(),LoginandSignupPage.class));
+//
+//        }
+//        else {
+//            String email= firebaseUser.getEmail();
+//            emailadd.getEditText().setText(email);
+//
+//        }
+//    }
 
     private void showAllUserData() {
 
@@ -136,4 +149,5 @@ public class OtherFragment extends Fragment {
 
 
     }
+
 }

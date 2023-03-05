@@ -46,6 +46,10 @@
 
             </RelativeLayout>
 
+
+
+
+
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/textInputUsername"
                 style="@style/parent"
@@ -81,7 +85,7 @@
                     android:maxLines="1" />
 
             </com.google.android.material.textfield.TextInputLayout>
-            
+
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -118,6 +122,8 @@
                 android:background="@drawable/button_background_blue"
                 android:text="Login"
                 android:textColor="@color/white" />
+
+
 
             <TextView
                 android:id="@+id/textNewUserSignup"

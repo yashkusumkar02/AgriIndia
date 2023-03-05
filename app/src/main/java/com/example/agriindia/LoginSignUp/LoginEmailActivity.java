@@ -1,12 +1,19 @@
 package com.example.agriindia.LoginSignUp;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
+import android.provider.Settings;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.ProgressBar;
 
 import com.example.agriindia.MainActivity;
@@ -26,6 +33,8 @@ public class LoginEmailActivity extends AppCompatActivity {
     TextInputLayout username, password;
 
     Button button, forgetP;
+
+    CheckBox rememberMe;;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -82,10 +91,47 @@ public class LoginEmailActivity extends AppCompatActivity {
     }
 
     public void loginUser(View view) {
+
+        if (!isConnected(this)){
+            showCustomDailog();
+        }
+
         //Validate Login Info
         if (!validateUsername() | !validatePassword()) {
         } else {
             isUser();
+        }
+    }
+
+    private void showCustomDailog() {
+        AlertDialog.Builder builder= new AlertDialog.Builder(LoginEmailActivity.this);
+        builder.setMessage("Please connect to the internet to proceed further")
+                .setCancelable(false)
+                .setPositiveButton("Connect", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        startActivity(new Intent(Settings.ACTION_WIFI_SETTINGS));
+                    }
+                })
+                .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        startActivity(new Intent(getApplicationContext(),LoginandSignupPage.class));
+                    }
+                });
+    }
+
+    private boolean isConnected(LoginEmailActivity loginEmailActivity) {
+        ConnectivityManager connectivityManager= (ConnectivityManager) loginEmailActivity.getSystemService(Context.CONNECTIVITY_SERVICE);
+
+        NetworkInfo wifiConn= connectivityManager.getNetworkInfo(ConnectivityManager.TYPE_WIFI);
+        NetworkInfo mobConn= connectivityManager.getNetworkInfo(ConnectivityManager.TYPE_MOBILE);
+
+        if ((wifiConn!=null && wifiConn.isConnected())  || (mobConn!= null && mobConn.isConnected())){
+            return true;
+        }
+        else {
+            return false;
         }
     }
 
@@ -103,12 +149,16 @@ public class LoginEmailActivity extends AppCompatActivity {
                     username.setErrorEnabled(false);
                     String passwordFromDB = dataSnapshot.child(userEnteredUsername).child("password").getValue(String.class);
                     if (passwordFromDB.equals(userEnteredPassword)) {
+
                         username.setError(null);
                         username.setErrorEnabled(false);
                         String nameFromDB = dataSnapshot.child(userEnteredUsername).child("name").getValue(String.class);
                         String usernameFromDB = dataSnapshot.child(userEnteredUsername).child("username").getValue(String.class);
                         String phoneNoFromDB = dataSnapshot.child(userEnteredUsername).child("phoneNo").getValue(String.class);
                         String emailFromDB = dataSnapshot.child(userEnteredUsername).child("email").getValue(String.class);
+
+
+
                         Intent intent = new Intent(getApplicationContext(), MainActivity.class);
                         intent.putExtra("name", nameFromDB);
                         intent.putExtra("username", usernameFromDB);

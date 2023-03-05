@@ -26,6 +26,14 @@
                 android:background="#FFC107"
                 android:padding="20dp">
 
+                <ImageButton
+                    android:id="@+id/editForm"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:src="@drawable/form"
+                    android:background="#00000000"
+                    android:layout_alignParentRight="true"/>
+
                 <ImageView
                     android:id="@+id/userImage"
                     android:layout_width="100dp"
@@ -207,15 +215,6 @@
 
                 </com.google.android.material.textfield.TextInputLayout>
 
-
-                <Button
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:background="@drawable/loginsignupbutton"
-                    android:onClick="update"
-                    android:text="UPDATE"
-                    android:textColor="@color/white" />
 
                 <Button
                     android:id="@+id/logoutButton"

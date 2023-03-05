@@ -48,28 +48,28 @@ public class LoginandSignupPage extends AppCompatActivity {
         setContentView(R.layout.activity_loginand_signup_page);
 
         materialButton1=findViewById(R.id.continueviasigninbuttonnew);
-        materialButton2=findViewById(R.id.continueviagooglebuttonnew);
+//        materialButton2=findViewById(R.id.continueviagooglebuttonnew);
         materialButton3=findViewById(R.id.continueviaphonebuttonnew);
 
-        GoogleSignInOptions googleSignInOptions= new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
-                .requestIdToken(getString(R.string.default_web_client_id))
-                        .requestEmail()
-                                .build();
+//        GoogleSignInOptions googleSignInOptions= new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+//                .requestIdToken(getString(R.string.default_web_client_id))
+//                        .requestEmail()
+//                                .build();
+//
+//        googleSignInClient = GoogleSignIn.getClient(this,googleSignInOptions );
+//
+//        firebaseAuth =FirebaseAuth.getInstance();
+//        checkUser();
 
-        googleSignInClient = GoogleSignIn.getClient(this,googleSignInOptions );
-
-        firebaseAuth =FirebaseAuth.getInstance();
-        checkUser();
-
-        materialButton2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Log.d(TAG,"onCLick: begin Google SignIn");
-                Intent intent = googleSignInClient.getSignInIntent();
-                startActivityForResult(intent, Integer.parseInt(RC_SIGN_IN));
-
-            }
-        });
+//        materialButton2.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Log.d(TAG,"onCLick: begin Google SignIn");
+//                Intent intent = googleSignInClient.getSignInIntent();
+//                startActivityForResult(intent, Integer.parseInt(RC_SIGN_IN));
+//
+//            }
+//        });
 
         materialButton1.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -91,73 +91,73 @@ public class LoginandSignupPage extends AppCompatActivity {
 
     }
 
-    private void checkUser()
-    {
-        FirebaseUser firebaseUser = firebaseAuth.getCurrentUser();
-        if (firebaseUser!=null){
+//    private void checkUser()
+//    {
+//        FirebaseUser firebaseUser = firebaseAuth.getCurrentUser();
+//        if (firebaseUser!=null){
+//
+//            Log.d(TAG,"checkUser: Already Logged In");
+//            startActivity(new Intent(this,MainActivity.class));
+//            finish();
+//        }
+//    }
 
-            Log.d(TAG,"checkUser: Already Logged In");
-            startActivity(new Intent(this,MainActivity.class));
-            finish();
-        }
-    }
+//    @Override
+//    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+//        super.onActivityResult(requestCode, resultCode, data);
+//
+//        if (requestCode == Integer.parseInt(RC_SIGN_IN) ) {
+//            Log.d(TAG,"onActivityResult: Google Signin intent result");
+//            Task<GoogleSignInAccount> accountTask = GoogleSignIn.getSignedInAccountFromIntent(data);
+//            try {
+//                GoogleSignInAccount account= accountTask.getResult(ApiException.class);
+//                firebaseAuthWithGoogleAccount(account);
+//
+//            } catch (Exception e){
+//                Log.d(TAG,"onActivityResult: "+e.getMessage());
+//            }
+//
+//        }
+//    }
 
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-
-        if (requestCode == Integer.parseInt(RC_SIGN_IN) ) {
-            Log.d(TAG,"onActivityResult: Google Signin intent result");
-            Task<GoogleSignInAccount> accountTask = GoogleSignIn.getSignedInAccountFromIntent(data);
-            try {
-                GoogleSignInAccount account= accountTask.getResult(ApiException.class);
-                firebaseAuthWithGoogleAccount(account);
-
-            } catch (Exception e){
-                Log.d(TAG,"onActivityResult: "+e.getMessage());
-            }
-
-        }
-    }
-
-    private void firebaseAuthWithGoogleAccount(GoogleSignInAccount account) {
-        Log.d(TAG,"firebaseAuthWithGoogleAccount: begin firebase auth with google account");
-        AuthCredential credential = GoogleAuthProvider.getCredential(account.getIdToken(),null);
-        firebaseAuth.signInWithCredential(credential)
-                .addOnSuccessListener(new OnSuccessListener<AuthResult>() {
-                    @Override
-                    public void onSuccess(AuthResult authResult) {
-
-                        Log.d(TAG,"onSuccess: Logged In");
-
-                        FirebaseUser firebaseUser=firebaseAuth.getCurrentUser();
-                        String uid= firebaseUser.getUid();
-                        String email= firebaseUser.getEmail();
-
-                        Log.d(TAG,"onSuccess: Email: "+ email);
-                        Log.d(TAG, "onSuccess: UID: "+ uid);
-
-                        if (authResult.getAdditionalUserInfo().isNewUser()){
-                            Log.d(TAG,"onSuccess: Account Created....!\n" +email);
-                            Toast.makeText(LoginandSignupPage.this, "Account Created....!"+email, Toast.LENGTH_SHORT).show();
-                        }
-                        else {
-                            Log.d(TAG,"onSuccess: Exisiting User...!\n"+email);
-                            Toast.makeText(LoginandSignupPage.this, "Exisiting User...!\n"+email, Toast.LENGTH_SHORT).show();
-                        }
-
-                        startActivity(new Intent(LoginandSignupPage.this, MainActivity.class));
-                        finish();
-
-                    }
-                })
-                .addOnFailureListener(new OnFailureListener() {
-                    @Override
-                    public void onFailure(@NonNull Exception e) {
-
-                        Log.d(TAG,"onFailure: Loggin Failed..!" +e.getMessage());
-
-                    }
-                });
-    }
+//    private void firebaseAuthWithGoogleAccount(GoogleSignInAccount account) {
+//        Log.d(TAG,"firebaseAuthWithGoogleAccount: begin firebase auth with google account");
+//        AuthCredential credential = GoogleAuthProvider.getCredential(account.getIdToken(),null);
+//        firebaseAuth.signInWithCredential(credential)
+//                .addOnSuccessListener(new OnSuccessListener<AuthResult>() {
+//                    @Override
+//                    public void onSuccess(AuthResult authResult) {
+//
+//                        Log.d(TAG,"onSuccess: Logged In");
+//
+//                        FirebaseUser firebaseUser=firebaseAuth.getCurrentUser();
+//                        String uid= firebaseUser.getUid();
+//                        String email= firebaseUser.getEmail();
+//
+//                        Log.d(TAG,"onSuccess: Email: "+ email);
+//                        Log.d(TAG, "onSuccess: UID: "+ uid);
+//
+//                        if (authResult.getAdditionalUserInfo().isNewUser()){
+//                            Log.d(TAG,"onSuccess: Account Created....!\n" +email);
+//                            Toast.makeText(LoginandSignupPage.this, "Account Created....!"+email, Toast.LENGTH_SHORT).show();
+//                        }
+//                        else {
+//                            Log.d(TAG,"onSuccess: Exisiting User...!\n"+email);
+//                            Toast.makeText(LoginandSignupPage.this, "Exisiting User...!\n"+email, Toast.LENGTH_SHORT).show();
+//                        }
+//
+//                        startActivity(new Intent(LoginandSignupPage.this, MainActivity.class));
+//                        finish();
+//
+//                    }
+//                })
+//                .addOnFailureListener(new OnFailureListener() {
+//                    @Override
+//                    public void onFailure(@NonNull Exception e) {
+//
+//                        Log.d(TAG,"onFailure: Loggin Failed..!" +e.getMessage());
+//
+//                    }
+//                });
+//    }
 }
