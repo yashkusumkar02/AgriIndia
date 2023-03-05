@@ -117,7 +117,7 @@ public class LoginandSignupPage extends AppCompatActivity {
 //                Log.d(TAG,"onActivityResult: "+e.getMessage());
 //            }
 
-        }
+//        }
     }
 
     private void firebaseAuthWithGoogleAccount(GoogleSignInAccount account) {
@@ -158,6 +158,6 @@ public class LoginandSignupPage extends AppCompatActivity {
                         Log.d(TAG,"onFailure: Loggin Failed..!" +e.getMessage());
 
                     }
-                })
+                });
     }
 }
