@@ -2,7 +2,9 @@ package com.example.agriindia.Fragments;
 
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentResultListener;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -10,6 +12,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.agriindia.Adapter.ArticleAdapter;
 import com.example.agriindia.Adapter.ProductAdapter;
@@ -84,6 +87,7 @@ public class ArticleCatFragment extends Fragment {
 
         titleT.setText(title);
 
+       // Toast.makeText(getActivity(), title, Toast.LENGTH_SHORT).show();
 
 
         GridLayoutManager gridLayoutManager = new GridLayoutManager(getContext(),2,GridLayoutManager.VERTICAL,false);
@@ -94,6 +98,9 @@ public class ArticleCatFragment extends Fragment {
                         .setQuery(FirebaseDatabase.getInstance().getReference("Article").child("category").child(title),articleModel.class)
                         .build();
 
+        Bundle args = new Bundle();
+        args.putString("index", title);
+        getParentFragmentManager().setFragmentResult("index1",args);
 
         adapter = new ArticleAdapter(options);
         recyclerView.setAdapter(adapter);
@@ -101,9 +108,6 @@ public class ArticleCatFragment extends Fragment {
         ArticleCatFragment f = new ArticleCatFragment();
 
 
-            Bundle args = new Bundle();
-            args.putString("index", title);
-            getParentFragmentManager().setFragmentResult("index1",args);
 
 //        f.setArguments(args);
         return view;

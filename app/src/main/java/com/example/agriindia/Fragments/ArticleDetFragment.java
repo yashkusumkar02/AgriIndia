@@ -80,14 +80,6 @@ public class ArticleDetFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_article_det, container, false);
 
-        getParentFragmentManager().setFragmentResultListener("index1", getActivity(), new FragmentResultListener() {
-            @Override
-            public void onFragmentResult(@NonNull String requestKey, @NonNull Bundle result) {
-
-                String data = result.getString("index");
-                Toast.makeText(getActivity(), data, Toast.LENGTH_SHORT).show();
-
-
                 ImageView image;
                 TextView titleT,description;
 
@@ -95,37 +87,134 @@ public class ArticleDetFragment extends Fragment {
                 titleT = view.findViewById(R.id.title);
                 description = view.findViewById(R.id.desc);
 
-                //String username = getActivity().getIntent().getStringExtra("username");
-
-                //Toast.makeText(getActivity(), title, Toast.LENGTH_SHORT).show();
                 DatabaseReference reference;
                 reference = FirebaseDatabase.getInstance().getReference("Article");
-                reference.child("category").child(data).child(title).get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
-                    @Override
-                    public void onComplete(@NonNull Task<DataSnapshot> task) {
-                        if (task.isSuccessful()) {
-                            if (task.getResult().exists()) {
-                                DataSnapshot dataSnapshot = task.getResult();
-                                String title1 = String.valueOf(dataSnapshot.child("title").getValue());
-                                String purl1 = String.valueOf(dataSnapshot.child("purl").getValue());
-                                String desc1 = String.valueOf(dataSnapshot.child("description").getValue());
-                                //Toast.makeText(getActivity(), title1, Toast.LENGTH_SHORT).show();
 
-                                if (title1 != null){
+                try {
+                    reference.child("category").child("Diseases").child(title).get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
+                        @Override
+                        public void onComplete(@NonNull Task<DataSnapshot> task) {
+                            if (task.isSuccessful()) {
+                                if (task.getResult().exists()) {
+
+                                    //Toast.makeText(getActivity(), "hii", Toast.LENGTH_SHORT).show();
+                                    DataSnapshot dataSnapshot = task.getResult();
+                                    String title1 = String.valueOf(dataSnapshot.child("title").getValue());
+                                    String purl1 = String.valueOf(dataSnapshot.child("purl").getValue());
+                                    String desc1 = String.valueOf(dataSnapshot.child("description").getValue());
+                                    //Toast.makeText(getActivity(), title1, Toast.LENGTH_SHORT).show();
                                     titleT.setText(title1);
                                     description.setText(desc1);
                                     Glide.with(image.getContext()).load(purl1).into(image);
-                                }
-                                else {
+
 
                                 }
-
                             }
                         }
-                    }
-                });
-            }
-        });
+                    });
+
+                    try {
+                        reference.child("category").child("Fruits").child(title).get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
+                            @Override
+                            public void onComplete(@NonNull Task<DataSnapshot> task) {
+                                if (task.isSuccessful()) {
+                                    if (task.getResult().exists()) {
+
+                                        //Toast.makeText(getActivity(), "hii", Toast.LENGTH_SHORT).show();
+                                        DataSnapshot dataSnapshot = task.getResult();
+                                        String title1 = String.valueOf(dataSnapshot.child("title").getValue());
+                                        String purl1 = String.valueOf(dataSnapshot.child("purl").getValue());
+                                        String desc1 = String.valueOf(dataSnapshot.child("description").getValue());
+                                        //Toast.makeText(getActivity(), title1, Toast.LENGTH_SHORT).show();
+                                        titleT.setText(title1);
+                                        description.setText(desc1);
+                                        Glide.with(image.getContext()).load(purl1).into(image);
+
+
+                                    }
+                                }
+                            }
+                        });
+
+                        try {
+                            reference.child("category").child("Methods").child(title).get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
+                                @Override
+                                public void onComplete(@NonNull Task<DataSnapshot> task) {
+                                    if (task.isSuccessful()) {
+                                        if (task.getResult().exists()) {
+
+                                            //Toast.makeText(getActivity(), "hii", Toast.LENGTH_SHORT).show();
+                                            DataSnapshot dataSnapshot = task.getResult();
+                                            String title1 = String.valueOf(dataSnapshot.child("title").getValue());
+                                            String purl1 = String.valueOf(dataSnapshot.child("purl").getValue());
+                                            String desc1 = String.valueOf(dataSnapshot.child("description").getValue());
+                                            //Toast.makeText(getActivity(), title1, Toast.LENGTH_SHORT).show();
+                                            titleT.setText(title1);
+                                            description.setText(desc1);
+                                            Glide.with(image.getContext()).load(purl1).into(image);
+
+
+                                        }
+                                    }
+                                }
+                            });
+                            try {
+                                reference.child("category").child("Plants").child(title).get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
+                                    @Override
+                                    public void onComplete(@NonNull Task<DataSnapshot> task) {
+                                        if (task.isSuccessful()) {
+                                            if (task.getResult().exists()) {
+
+                                                //Toast.makeText(getActivity(), "hii", Toast.LENGTH_SHORT).show();
+                                                DataSnapshot dataSnapshot = task.getResult();
+                                                String title1 = String.valueOf(dataSnapshot.child("title").getValue());
+                                                String purl1 = String.valueOf(dataSnapshot.child("purl").getValue());
+                                                String desc1 = String.valueOf(dataSnapshot.child("description").getValue());
+                                                //Toast.makeText(getActivity(), title1, Toast.LENGTH_SHORT).show();
+                                                titleT.setText(title1);
+                                                description.setText(desc1);
+                                                Glide.with(image.getContext()).load(purl1).into(image);
+
+
+                                            }
+                                        }
+                                    }
+                                });
+
+                                try {
+                                    reference.child("category").child("Seeds").child(title).get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
+                                        @Override
+                                        public void onComplete(@NonNull Task<DataSnapshot> task) {
+                                            if (task.isSuccessful()) {
+                                                if (task.getResult().exists()) {
+
+                                                    //Toast.makeText(getActivity(), "hii", Toast.LENGTH_SHORT).show();
+                                                    DataSnapshot dataSnapshot = task.getResult();
+                                                    String title1 = String.valueOf(dataSnapshot.child("title").getValue());
+                                                    String purl1 = String.valueOf(dataSnapshot.child("purl").getValue());
+                                                    String desc1 = String.valueOf(dataSnapshot.child("description").getValue());
+                                                    //Toast.makeText(getActivity(), title1, Toast.LENGTH_SHORT).show();
+                                                    titleT.setText(title1);
+                                                    description.setText(desc1);
+                                                    Glide.with(image.getContext()).load(purl1).into(image);
+
+
+                                                }
+                                            }
+                                        }
+                                    });
+                                }catch (Exception e){}
+
+                            }catch (Exception e){}
+
+                        }catch (Exception e){}
+
+                    } catch (Exception e){}
+
+                }catch (Exception e){
+
+                }
+
         return view;
     }
 }
