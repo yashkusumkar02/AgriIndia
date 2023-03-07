@@ -1,12 +1,15 @@
 package com.example.agriindia.Fragments;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+import androidx.core.view.MenuProvider;
 import androidx.fragment.app.Fragment;
 import androidx.loader.content.AsyncTaskLoader;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -17,12 +20,16 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.widget.AbsListView;
+import android.widget.EditText;
+import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.ProgressBar;
-import android.widget.Toolbar;
+import android.widget.Toast;
 
 import com.example.agriindia.Adapter.GoiAdapter;
 import com.example.agriindia.Adapter.GoiDetail;
@@ -51,9 +58,14 @@ public class APMCFragment extends Fragment {
     private LinearLayoutManager linearLayoutManager;
     private Toolbar toolbar;
     private ProgressBar progressBar;
+    private ProgressBar progressBar2;
+    private String  text=null;
     private Boolean isScrolling = false;
     int currentItems, totalItems, scrolledItems;
     int offset = 20;
+
+    private EditText searchText;
+    private ImageButton searchButton;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -90,8 +102,10 @@ public class APMCFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+
+
         getActivity().getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE);
-        recyclerView = recyclerView.findViewById(R.id.recyclerView);
+        recyclerView.findViewById(R.id.recyclerView);
         goiDetails = new ArrayList<>();
         linearLayoutManager = new LinearLayoutManager(getActivity());
         goiAdapter = new GoiAdapter(getActivity(), goiDetails);
@@ -101,7 +115,6 @@ public class APMCFragment extends Fragment {
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(linearLayoutManager);
         recyclerView.setAdapter(goiAdapter);
-
 
 
         toolbar = toolbar.findViewById(R.id.BarLayout);
@@ -124,6 +137,7 @@ public class APMCFragment extends Fragment {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
+
 
     }
 
@@ -165,7 +179,7 @@ public class APMCFragment extends Fragment {
             @Override
             public void run() {
                 try {
-                    DownloadTask task = new DownloadTask();
+                    APMCFragment.DownloadTask task= new APMCFragment.DownloadTask();
                     task.execute("https://api.data.gov.in/resource/9ef84268-d588-465a-a308-a864a43d0070?api-key=579b464db66ec23bdd000001cdd3946e44ce4aad7209ff7b23ac571b&format=xml&offset=0&limit=20");
                     offset += 20;
 
@@ -176,7 +190,6 @@ public class APMCFragment extends Fragment {
         }, 5000);
 
     }
-
 
 
     @SuppressLint("StaticFieldLeak")
@@ -205,7 +218,6 @@ public class APMCFragment extends Fragment {
                 e.printStackTrace();
                 return null;
             }
-
 
 
         }
@@ -237,26 +249,29 @@ public class APMCFragment extends Fragment {
                     goiAdapter = new GoiAdapter(getActivity(), goiDetails);
                     goiAdapter.notifyDataSetChanged();
                     recyclerView.setAdapter(goiAdapter);
+
+                    if (totalItems==(currentItems + scrolledItems))
                     recyclerView.scrollToPosition(totalItems - currentItems + 1);
                     progressBar.setVisibility(View.GONE);
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
             } else {
-                try {
+                Toast.makeText(getActivity(), "Try Again", Toast.LENGTH_SHORT).show();
 
-
-                    DownloadTask task = new DownloadTask();
-                    task.execute("https://api.data.gov.in/resource/9ef84268-d588-465a-a308-a864a43d0070?api-key=579b464db66ec23bdd000001cdd3946e44ce4aad7209ff7b23ac571b&format=xml&offset=0&limit=20");
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-
+            }
+            progressBar2.setVisibility(View.GONE);
+            if (goiDetails.isEmpty()){
+                Toast.makeText(getActivity(), "Data not Fetched....Enter First Letter Capital Always", Toast.LENGTH_LONG).show();
             }
 
         }
 
+
+
     }
+
+
 
 
 
@@ -267,7 +282,23 @@ public class APMCFragment extends Fragment {
         return inflater.inflate(R.layout.fragment_a_p_m_c, container, false);
     }
 
+    public void setToolbar(Toolbar toolbar) {
+        this.toolbar = toolbar;
 
+        MenuProvider menuProvider= new MenuProvider() {
+            @Override
+            public void onCreateMenu(@NonNull Menu menu, @NonNull MenuInflater menuInflater) {
+                menuInflater.inflate(R.menu.mainmenu, menu);
+            }
 
-
+            @Override
+            public boolean onMenuItemSelected(@NonNull MenuItem menuItem) {
+                if (menuItem.getItemId()==R.id.searchByDistrict){
+                    Intent filterintent = new Intent(getActivity(),APMCFragment.class);
+                    startActivity(filterintent);
+                }
+                return false;
+            }
+        };
+    }
 }
