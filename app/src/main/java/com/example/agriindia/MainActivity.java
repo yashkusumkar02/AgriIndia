@@ -8,6 +8,7 @@ import androidx.fragment.app.Fragment;
 import androidx.appcompat.widget.Toolbar;
 
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.FrameLayout;
 //import android.widget.Toolbar;
@@ -105,6 +106,8 @@ public class MainActivity extends AppCompatActivity {
 //
 //        drawerLayout.addDrawerListener(toggle);
 //        toggle.syncState();
+
+
     }
 
 }
