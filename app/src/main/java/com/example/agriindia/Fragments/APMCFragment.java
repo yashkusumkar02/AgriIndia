@@ -104,6 +104,8 @@ public class APMCFragment extends Fragment {
 
 
 
+
+
         getActivity().getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE);
         recyclerView.findViewById(R.id.recyclerView);
         goiDetails = new ArrayList<>();
@@ -279,7 +281,8 @@ public class APMCFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_a_p_m_c, container, false);
+        View view = inflater.inflate(R.layout.fragment_a_p_m_c, container, false);
+        return view;
     }
 
     public void setToolbar(Toolbar toolbar) {
