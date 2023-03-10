@@ -101,40 +101,40 @@ public class APMCFragment extends Fragment {
 
 
 
-
-        getActivity().getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE);
-        recyclerView.findViewById(R.id.recyclerView);
-        goiDetails = new ArrayList<>();
-        linearLayoutManager = new LinearLayoutManager(getActivity());
-        goiAdapter = new GoiAdapter(getActivity(), goiDetails);
-        progressBar = progressBar.findViewById(R.id.progressBar);
-        progressBar.setVisibility(View.GONE);
-
-        recyclerView.setHasFixedSize(true);
-        recyclerView.setLayoutManager(linearLayoutManager);
-        recyclerView.setAdapter(goiAdapter);
-
-
-        toolbar = toolbar.findViewById(R.id.BarLayout);
-        ((AppCompatActivity) getActivity()).setSupportActionBar(toolbar);
-        ActionBar actionBar = ((AppCompatActivity) getActivity()).getSupportActionBar();
-        ((AppCompatActivity) getActivity()).getSupportActionBar().setTitle("Agri GOI");
-
-
-        try {
-            DownloadTask task = new DownloadTask();
-            task.execute("https://api.data.gov.in/resource/9ef84268-d588-465a-a308-a864a43d0070?api-key=579b464db66ec23bdd000001cdd3946e44ce4aad7209ff7b23ac571b&format=xml&offset=0&limit=20");
-
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        loadData();
-
-
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
+//
+//        getActivity().getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE);
+//        recyclerView.findViewById(R.id.recyclerView);
+//        goiDetails = new ArrayList<>();
+//        linearLayoutManager = new LinearLayoutManager(getActivity());
+//        goiAdapter = new GoiAdapter(getActivity(), goiDetails);
+//        progressBar = progressBar.findViewById(R.id.progressBar);
+//        progressBar.setVisibility(View.GONE);
+//
+//        recyclerView.setHasFixedSize(true);
+//        recyclerView.setLayoutManager(linearLayoutManager);
+//        recyclerView.setAdapter(goiAdapter);
+//
+//
+//        toolbar = toolbar.findViewById(R.id.BarLayout);
+//        ((AppCompatActivity) getActivity()).setSupportActionBar(toolbar);
+//        ActionBar actionBar = ((AppCompatActivity) getActivity()).getSupportActionBar();
+//        ((AppCompatActivity) getActivity()).getSupportActionBar().setTitle("Agri GOI");
+//
+//
+//        try {
+//            DownloadTask task = new DownloadTask();
+//            task.execute("https://api.data.gov.in/resource/9ef84268-d588-465a-a308-a864a43d0070?api-key=579b464db66ec23bdd000001cdd3946e44ce4aad7209ff7b23ac571b&format=xml&offset=0&limit=20");
+//
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        }
+//        loadData();
+//
+//
+//        if (getArguments() != null) {
+//            mParam1 = getArguments().getString(ARG_PARAM1);
+//            mParam2 = getArguments().getString(ARG_PARAM2);
+//        }
 
 
     }
@@ -250,7 +250,7 @@ public class APMCFragment extends Fragment {
                     recyclerView.setAdapter(goiAdapter);
 
                     if (totalItems==(currentItems + scrolledItems))
-                    recyclerView.scrollToPosition(totalItems - currentItems + 1);
+                        recyclerView.scrollToPosition(totalItems - currentItems + 1);
                     progressBar.setVisibility(View.GONE);
                 } catch (Exception e) {
                     e.printStackTrace();
@@ -259,10 +259,10 @@ public class APMCFragment extends Fragment {
                 Toast.makeText(getActivity(), "Try Again", Toast.LENGTH_SHORT).show();
 
             }
-            progressBar2.setVisibility(View.GONE);
-            if (goiDetails.isEmpty()){
-                Toast.makeText(getActivity(), "Data not Fetched....Enter First Letter Capital Always", Toast.LENGTH_LONG).show();
-            }
+//            progressBar2.setVisibility(View.GONE);
+//            if (goiDetails.isEmpty()){
+//                Toast.makeText(getActivity(), "Data not Fetched....Enter First Letter Capital Always", Toast.LENGTH_LONG).show();
+//            }
 
         }
 
@@ -279,6 +279,44 @@ public class APMCFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_a_p_m_c, container, false);
+
+
+        getActivity().getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE);
+        recyclerView = view.findViewById(R.id.recyclerView);
+        goiDetails = new ArrayList<>();
+        linearLayoutManager = new LinearLayoutManager(getActivity());
+        goiAdapter = new GoiAdapter(getActivity(), goiDetails);
+        progressBar =  view.findViewById(R.id.progressBar);
+        progressBar.setVisibility(View.GONE);
+
+        recyclerView.setHasFixedSize(true);
+        recyclerView.setLayoutManager(linearLayoutManager);
+        recyclerView.setAdapter(goiAdapter);
+
+
+        toolbar = view.findViewById(R.id.BarLayout);
+        ((AppCompatActivity) getActivity()).setSupportActionBar(toolbar);
+        ActionBar actionBar = ((AppCompatActivity) getActivity()).getSupportActionBar();
+        ((AppCompatActivity) getActivity()).getSupportActionBar().setTitle("Agri GOI");
+
+
+        try {
+            DownloadTask task = new DownloadTask();
+            task.execute("https://api.data.gov.in/resource/9ef84268-d588-465a-a308-a864a43d0070?api-key=579b464db66ec23bdd000001cdd3946e44ce4aad7209ff7b23ac571b&format=xml&offset=0&limit=20");
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        loadData();
+
+
+        if (getArguments() != null) {
+            mParam1 = getArguments().getString(ARG_PARAM1);
+            mParam2 = getArguments().getString(ARG_PARAM2);
+        }
+
+
+
         return view;
     }
 
