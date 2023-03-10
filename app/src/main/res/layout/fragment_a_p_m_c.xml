@@ -5,53 +5,54 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_marginBottom="50dp"
+    android:background="@drawable/background"
     tools:context=".Fragments.APMCFragment">
 
     <!-- TODO: Update blank fragment layout -->
-    
+
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="match_parent">
 
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-        
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recyclerView"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_marginStart="2dp"
-            android:layout_marginBottom="2dp"
-            android:layout_marginTop="1dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="1.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/BarLayout"
-            app:layout_constraintVertical_bias="1.0"/>
+        <LinearLayout
+            android:layout_width="350dp"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:layout_gravity="center">
+    
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="महाराष्ट्र राज्य कृषि पणन मंडळ"
+            android:textSize="25sp"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            android:gravity="center"
+            android:textStyle="bold"
+            />
 
-            <include
-                android:id="@+id/BarLayout"
-                layout="@layout/appbarlayout"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="1.0"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"/>
-            
-            <ProgressBar
-                android:id="@+id/progressBar"
-                style="?android:attr/progressBarStyle"
+            <TextView
+                android:layout_marginTop="20dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="8dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"/>
+                android:text="महाराष्ट्र राज्य कृषि पणन मंडळाची स्थापना महाराष्ट्र कृषि उत्पन्न खरेदी विक्री (विकास व विनियमन) अधिनियम 1963 मधील कलम 39 (अ) अन्वये 23 मार्च, 1984 रोजी झाली. कृषि पणन मंडळ हे राज्यातील कृषि मालाच्या पणन व्यवस्थेच्या विकासासाठी प्रयत्नशील असून या क्षेत्रात पणन मंडळाने विविध कार्ये केली आहेत. कृषि पणन मंडळाने राज्यातील पणन व्यवस्थेत अद्ययावतपणा आणण्याबरोबरच बरोबरच सुसुत्रता आणि समन्वय साधण्याच्या दृष्टीने महत्त्वाची कामगिरी केलेली आहे."
+                android:textSize="20sp"
+                android:gravity="center"
+                android:textColor="@color/white"
+                android:layout_gravity="center"/>
 
-        </androidx.constraintlayout.widget.ConstraintLayout>
-        
-        
+            <Button
+                android:id="@+id/apmcButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/loginsignupbutton"
+                android:layout_marginTop="30dp"
+                android:text="CLICK TO VIEW APMC PRICE MARKET"
+                android:textColor="@color/white"/>
+
+        </LinearLayout>
+
     </ScrollView>
 
 

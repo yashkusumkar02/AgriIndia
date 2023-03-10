@@ -23,6 +23,12 @@
         tools:node="merge"
         tools:targetApi="31">
         <activity
+            android:name=".APMC"
+            android:exported="false" />
+        <activity
+            android:name=".MainActivity2"
+            android:exported="false" />
+        <activity
             android:name=".FilterAcivity"
             android:exported="false" />
         <activity
