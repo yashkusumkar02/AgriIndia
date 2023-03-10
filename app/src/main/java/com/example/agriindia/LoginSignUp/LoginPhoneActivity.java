@@ -41,7 +41,7 @@ public class LoginPhoneActivity extends AppCompatActivity {
         Username = findViewById(R.id.textInputUsername);
         Password = findViewById(R.id.textInputPassword);
         loginBtn  = findViewById(R.id.loginButton);
-        //checkcred();
+        checkcred();
 
     }
     private void checkcred(){
