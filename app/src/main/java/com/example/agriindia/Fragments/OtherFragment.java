@@ -1,9 +1,13 @@
 package com.example.agriindia.Fragments;
 
+import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
@@ -99,6 +103,40 @@ public class OtherFragment extends Fragment {
         phoneNo = view.findViewById(R.id.phoneNo);
         logoutbtn = (Button) view.findViewById(R.id.logoutButton);
 
+        logoutbtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                AlertDialog.Builder dialog = new AlertDialog.Builder(logoutbtn.getContext());
+                dialog.setTitle("LOGOUT");
+                dialog.setMessage("Are You Sure You Want To Logout ?");
+
+
+                dialog.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+
+                        FirebaseAuth.getInstance().signOut();
+                        SharedPreferences preferences = getActivity().getSharedPreferences("sharedPrefs", Context.MODE_PRIVATE);
+                        SharedPreferences.Editor editor = preferences.edit();
+                        editor.clear();
+                        editor.apply();
+                        Intent intent = new Intent(getActivity(),LoginandSignupPage.class);
+                        startActivity(intent);
+                        getActivity().finish();
+
+                    }
+                });
+
+                dialog.setNegativeButton("No", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                    }
+                });
+                dialog.show();
+
+            }
+        });
 
         firebaseAuth = FirebaseAuth.getInstance();
 //        checkUser();
@@ -189,7 +227,34 @@ public class OtherFragment extends Fragment {
 
 
 
-    public void logoutUser(View view) {
-        firebaseAuth.signOut();
-    }
+//    public void logoutUser(View view) {
+//        AlertDialog.Builder dialog = new AlertDialog.Builder(l.getContext());
+//        dialog.setTitle("LOGOUT");
+//        dialog.setMessage("Are You Sure You Want To Logout ?");
+//
+//
+//        dialog.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+//            @Override
+//            public void onClick(DialogInterface dialog, int which) {
+//
+//                FirebaseAuth.getInstance().signOut();
+//                SharedPreferences preferences = getActivity().getSharedPreferences("sharedPrefs", Context.MODE_PRIVATE);
+//                SharedPreferences.Editor editor = preferences.edit();
+//                editor.clear();
+//                editor.apply();
+//                Intent intent = new Intent(getActivity(),Login.class);
+//                startActivity(intent);
+//                getActivity().finish();
+//
+//            }
+//        });
+//
+//        dialog.setNegativeButton("No", new DialogInterface.OnClickListener() {
+//            @Override
+//            public void onClick(DialogInterface dialog, int which) {
+//                dialog.dismiss();
+//            }
+//        });
+//        dialog.show();
+//    }
 }
