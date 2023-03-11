@@ -148,21 +148,10 @@ public class OtherFragment extends Fragment {
 
             }
         });
-
-
-        logoutbtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                FirebaseAuth.getInstance().signOut();
-                startActivity(new Intent(getActivity(), LoginandSignupPage.class));
-            }
-        });
-
-
-
-
         return view;
     }
+
+
 
 
     private void showAllUserData() {
@@ -198,4 +187,9 @@ public class OtherFragment extends Fragment {
         });
     }
 
+
+
+    public void logoutUser(View view) {
+        firebaseAuth.signOut();
+    }
 }
