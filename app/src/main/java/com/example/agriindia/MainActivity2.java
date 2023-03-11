@@ -33,6 +33,8 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.net.ssl.HttpsURLConnection;
+
 public class MainActivity2 extends AppCompatActivity {
 
 
@@ -74,7 +76,7 @@ public class MainActivity2 extends AppCompatActivity {
 
         try {
             DownloadTask downloadTask = new DownloadTask();
-            downloadTask.execute("https://api.data.gov.in/resource/9ef84268-d588-465a-a308-a864a43d0070?api-key=579b464db66ec23bdd000001cdd3946e44ce4aad7209ff7b23ac571b&format=xml&offset=20&limit=10");
+            downloadTask.execute("https://api.data.gov.in/resource/9ef84268-d588-465a-a308-a864a43d0070?api-key=579b464db66ec23bdd000001cdd3946e44ce4aad7209ff7b23ac571b&format=json&offset=0&limit=20");
 
         } catch (Exception e) {
             e.printStackTrace();
@@ -92,11 +94,11 @@ public class MainActivity2 extends AppCompatActivity {
         protected String doInBackground(String... urls) {
 
             URL url;
-            HttpURLConnection urlConnection = null;
+            HttpsURLConnection urlConnection = null;
             String result = "";
             try {
                 url = new URL(urls[0]);
-                urlConnection = (HttpURLConnection) url.openConnection();
+                urlConnection = (HttpsURLConnection) url.openConnection();
                 InputStream inputStream = urlConnection.getInputStream();
                 InputStreamReader reader = new InputStreamReader(inputStream);
                 int data = reader.read();
@@ -127,8 +129,8 @@ public class MainActivity2 extends AppCompatActivity {
                         GoiDetail details=new GoiDetail();
                         details.setGroceryName(part.getString("commodity"));
                         details.setGroceryPlace(part.getString("district")+","+part.getString("state"));
-                        details.setGroceryPrice(part.getString("model_price"));
-                        details.setGroceryTime(Long.valueOf(part.getString("timestamp")));
+                        details.setGroceryPrice(part.getString("modal_price"));
+//                        details.setGroceryTime(Long.valueOf(part.getString("arrival_date")));
 
 
                         //for checking api we can use log
@@ -150,7 +152,7 @@ public class MainActivity2 extends AppCompatActivity {
                 try {
 
                     DownloadTask downloadTask = new DownloadTask();
-                    downloadTask.execute("https://api.data.gov.in/resource/9ef84268-d588-465a-a308-a864a43d0070?api-key=579b464db66ec23bdd000001cdd3946e44ce4aad7209ff7b23ac571b&format=xml&offset=20&limit=10");
+                    downloadTask.execute("https://api.data.gov.in/resource/9ef84268-d588-465a-a308-a864a43d0070?api-key=579b464db66ec23bdd000001cdd3946e44ce4aad7209ff7b23ac571b&format=json&offset=0&limit=20");
                 }
                 catch (Exception e){
                     e.printStackTrace();
@@ -191,7 +193,7 @@ public class MainActivity2 extends AppCompatActivity {
             public void run() {
                 try {
                     DownloadTask downloadTask = new DownloadTask();
-                    downloadTask.execute("https://api.data.gov.in/resource/9ef84268-d588-465a-a308-a864a43d0070?api-key=579b464db66ec23bdd000001cdd3946e44ce4aad7209ff7b23ac571b&format=xml&offset=20&limit=10");
+                    downloadTask.execute("https://api.data.gov.in/resource/9ef84268-d588-465a-a308-a864a43d0070?api-key=579b464db66ec23bdd000001cdd3946e44ce4aad7209ff7b23ac571b&format=xml&offset=0&limit=20");
                     offset+=20;
                 }
                 catch (Exception e) {

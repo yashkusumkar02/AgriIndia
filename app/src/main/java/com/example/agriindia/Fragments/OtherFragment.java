@@ -178,12 +178,6 @@ public class OtherFragment extends Fragment {
                         }
                     }
                 });
-
-
-
-
-
-
             }
         });
         return view;

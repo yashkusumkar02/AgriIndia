@@ -45,10 +45,10 @@ public class GoiAdapter extends RecyclerView.Adapter<GoiAdapter.GoiViewHolder> {
         holder.itemPlace.setText(goiDetails.get(position).getGroceryPlace());
         holder.itemPrice.setText("₹"+goiDetails.get(position).getGroceryPrice());
 
-        Calendar calendar= Calendar.getInstance(Locale.getDefault());
-        calendar.setTimeInMillis(goiDetails.get(position).getGroceryTime()*1000);
-        String date= DateFormat.format("dd/MM/yyyy",calendar).toString();
-        holder.itemDate.setText(date);
+//        Calendar calendar= Calendar.getInstance(Locale.getDefault());
+//        calendar.setTimeInMillis(goiDetails.get(position).getGroceryTime()*1000);
+//        String date= DateFormat.format("dd/MM/yyyy",calendar).toString();
+//        holder.itemDate.setText(date);
 
 
     }
