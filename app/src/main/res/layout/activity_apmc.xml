@@ -12,7 +12,7 @@
         android:layout_height="0dp"
         android:id="@+id/filterRecyler"
         android:layout_marginTop="4dp"
-        android:background="#B2B2B2"
+        android:background="#D1D1D1"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
