@@ -33,7 +33,7 @@ public class SplashScreen extends AppCompatActivity {
                     editor.putBoolean("FirstTime", false);
                     editor.apply();
 
-                    startActivity(new Intent(SplashScreen.this,OnBoardScreen.class));
+                    startActivity(new Intent(SplashScreen.this,LoginandSignupPage.class));
                 }
                 else {
                     Intent intent=new Intent(SplashScreen.this,LoginandSignupPage.class);

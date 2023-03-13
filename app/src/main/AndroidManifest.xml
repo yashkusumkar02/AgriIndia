@@ -22,6 +22,19 @@
         android:usesCleartextTraffic="true"
         tools:node="merge"
         tools:targetApi="31">
+
+        <activity
+            android:name=".PasswordChangeSuccessfully"
+            android:exported="false" />
+        <activity
+            android:name=".forgotPasswordVerificationCode"
+            android:exported="false" />
+        <activity
+            android:name=".ForgotPassword"
+            android:exported="false" />
+        <activity
+            android:name=".ChangePassword"
+            android:exported="false" />
         <activity
             android:name=".AddPost"
             android:exported="false" />
@@ -70,11 +83,11 @@
         <activity
             android:name=".LoginSignUp.LoginandSignupPage"
             android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+<!--            <intent-filter>-->
+<!--                <action android:name="android.intent.action.MAIN" />-->
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+<!--                <category android:name="android.intent.category.LAUNCHER" />-->
+<!--            </intent-filter>-->
         </activity>
         <activity
             android:name=".OnBoardScreen"
@@ -92,12 +105,12 @@
             android:name=".SplashScreen"
             android:exported="true">
 
-            <!-- <intent-filter> -->
-            <!-- <action android:name="android.intent.action.MAIN" /> -->
+             <intent-filter>
+             <action android:name="android.intent.action.MAIN" />
 
 
-            <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
-            <!-- </intent-filter> -->
+             <category android:name="android.intent.category.LAUNCHER" />
+             </intent-filter>
         </activity>
         <activity
             android:name=".MainActivity"

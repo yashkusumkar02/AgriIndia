@@ -166,7 +166,7 @@ public class APMC extends AppCompatActivity {
                     recyclerView.setAdapter(goiAdapter);
 
                     if (totalItems==(currentItems + scrolledItems))
-                    recyclerView.scrollToPosition(totalItems - currentItems+1);
+                        recyclerView.scrollToPosition(totalItems - currentItems+1);
                     progressBar.setVisibility(View.GONE);
                 }
                 catch (Exception e) {

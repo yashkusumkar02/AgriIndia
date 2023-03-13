@@ -43,6 +43,15 @@ public class LoginPhoneActivity extends AppCompatActivity {
         loginBtn  = findViewById(R.id.loginButton);
         checkcred();
 
+        Button FP = findViewById(R.id.textForgetPassword);
+        FP.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(LoginPhoneActivity.this,ForgetPassword.class);
+
+                startActivity(intent);
+            }
+        });
     }
     private void checkcred(){
         SharedPreferences sharedPreferences = getSharedPreferences(SHARED_PREFS, MODE_PRIVATE);

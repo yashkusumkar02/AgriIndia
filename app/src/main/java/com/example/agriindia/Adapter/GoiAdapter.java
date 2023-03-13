@@ -12,7 +12,9 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.agriindia.R;
 
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 
@@ -45,10 +47,13 @@ public class GoiAdapter extends RecyclerView.Adapter<GoiAdapter.GoiViewHolder> {
         holder.itemPlace.setText(goiDetails.get(position).getGroceryPlace());
         holder.itemPrice.setText("₹"+goiDetails.get(position).getGroceryPrice());
 
+
+        SimpleDateFormat sd = new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault());
+        String date = sd.format(new Date());
 //        Calendar calendar= Calendar.getInstance(Locale.getDefault());
 //        calendar.setTimeInMillis(goiDetails.get(position).getGroceryTime()*1000);
 //        String date= DateFormat.format("dd/MM/yyyy",calendar).toString();
-//        holder.itemDate.setText(date);
+        holder.itemDate.setText(date);
 
 
     }
