@@ -27,6 +27,15 @@ public class UpdateProfile extends AppCompatActivity {
         setContentView(R.layout.activity_update_profile);
         imageButton=findViewById(R.id.closeIcon);
 
+        imageButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent= new Intent(UpdateProfile.this,OtherFragment.class);
+                startActivity(intent);
+                finish();
+            }
+        });
+
 
         name = findViewById(R.id.fullname);
         mob = findViewById(R.id.phoneNo);
