@@ -116,19 +116,19 @@ public class ForgotPassword extends AppCompatActivity {
                         intent.putExtra("username",enteredUsername);
                         startActivity(intent);
                         finish();
-                        FirebaseDatabase.getInstance().getReference("users")
-                                .child(FirebaseAuth.getInstance().getCurrentUser().getUid())
-                                .addListenerForSingleValueEvent(new ValueEventListener() {
-                                    @Override
-                                    public void onDataChange(@NonNull @NotNull DataSnapshot snapshot) {
-                                        GlobalVar.currentUser = snapshot.getValue(UserHelperClass.class);
-
-                                    }
-                                    @Override
-                                    public void onCancelled(@NonNull @NotNull DatabaseError error) {
-
-                                    }
-                                });
+//                        FirebaseDatabase.getInstance().getReference("users")
+//                                .child(FirebaseAuth.getInstance().getCurrentUser().getUid())
+//                                .addListenerForSingleValueEvent(new ValueEventListener() {
+//                                    @Override
+//                                    public void onDataChange(@NonNull @NotNull DataSnapshot snapshot) {
+//                                        GlobalVar.currentUser = snapshot.getValue(UserHelperClass.class);
+//
+//                                    }
+//                                    @Override
+//                                    public void onCancelled(@NonNull @NotNull DatabaseError error) {
+//
+//                                    }
+//                                });
                     }
                     else {
                         String passFromDB1 = snapshot.child(enteredUsername).child("phoneNo").getValue().toString();
