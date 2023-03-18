@@ -13,6 +13,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.example.agriindia.ForgotPassword;
 import com.example.agriindia.MainActivity;
 import com.example.agriindia.R;
 import com.google.android.material.textfield.TextInputLayout;
@@ -47,7 +48,7 @@ public class LoginPhoneActivity extends AppCompatActivity {
         FP.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(LoginPhoneActivity.this,ForgetPassword.class);
+                Intent intent = new Intent(LoginPhoneActivity.this, ForgotPassword.class);
 
                 startActivity(intent);
             }
